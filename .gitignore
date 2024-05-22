@@ -1,0 +1,84 @@
+# Fichiers Rider
+.idea/
+*.sln.iml
+.idea_modules/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/libraries/
+
+# Fichiers de configuration de build
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.VC.db
+
+# Fichiers du répertoire bin et obj
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Tt]emp/
+
+# Packages NuGet
+*.nupkg
+*.nuspec
+.nuget/
+packages/
+
+# Packages npm
+node_modules/
+
+# Dossiers de la plateforme de publication
+publish/
+.publishsettings
+.vs/
+.vscode/
+
+# Logs
+*.log
+
+# Fichiers de déploiement
+.vscode/
+*.deployment
+.deploy/
+
+# Environnements secrets
+.env
+.env.local
+.env.*.local
+.env.*.example
+
+# Répertoires JetBrains Rider
+.idea/
+.idea_modules/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/libraries/
+.idea/.idea.libraries
+
+# Mono auto-generated files
+mono_crash.*
+
+# Assemblies
+*.dll
+*.exe
+*.pdb
+*.mdb
+
+# Documentation files
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+
+# Audio files
+*.mp3
+*.wav
+
+# DB file
+*.db
