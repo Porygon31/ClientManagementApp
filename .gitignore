@@ -76,9 +76,5 @@ mono_crash.*
 *.xls
 *.xlsx
 
-# Audio files
-*.mp3
-*.wav
-
 # DB file
 *.db
