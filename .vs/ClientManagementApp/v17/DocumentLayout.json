@@ -1,0 +1,191 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|c:\\users\\administrateur.jbdu31-pc\\source\\repos\\clientmanagementapp\\clientmanagementapp\\clientform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\clientform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\clientmanagementapp\\clientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\clientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\clientmanagementapp\\entrepriseform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\entrepriseform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\clientmanagementapp\\entrepriseform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\entrepriseform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\clientmanagementapp\\entrepriseform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\entrepriseform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|c:\\users\\administrateur.jbdu31-pc\\source\\repos\\clientmanagementapp\\clientmanagementapp\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\clientmanagementapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\clientmanagementapp\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\clientmanagementapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\clientmanagementapp\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{455D460D-F5B6-4FF6-86A1-CDD519CCFF84}|ClientManagementApp\\ClientManagementApp.csproj|solutionrelative:clientmanagementapp\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1a46fd64-28d5-434c-8eb3-17a02d419b53}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClientForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\ClientForm.Designer.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\ClientForm.Designer.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\ClientForm.Designer.cs",
+              "RelativeToolTip": "ClientManagementApp\\ClientForm.Designer.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T02:37:45.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClientForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\ClientForm.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\ClientForm.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\ClientForm.cs [Design]",
+              "RelativeToolTip": "ClientManagementApp\\ClientForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T01:59:05.153Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\Form1.Designer.cs",
+              "RelativeToolTip": "ClientManagementApp\\Form1.Designer.cs",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAowH0AAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T14:28:58.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EntrepriseForm.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\EntrepriseForm.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\EntrepriseForm.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\EntrepriseForm.cs",
+              "RelativeToolTip": "ClientManagementApp\\EntrepriseForm.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAD4v0cAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T21:00:00.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EntrepriseForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\EntrepriseForm.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\EntrepriseForm.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\EntrepriseForm.cs [Design]",
+              "RelativeToolTip": "ClientManagementApp\\EntrepriseForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T20:51:23.851Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\Form1.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\Form1.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\Form1.cs",
+              "RelativeToolTip": "ClientManagementApp\\Form1.cs",
+              "ViewState": "AQIAAKoAAAAAAAAAAAD4v70AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T00:51:44.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DatabaseHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\DatabaseHelper.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\DatabaseHelper.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\DatabaseHelper.cs",
+              "RelativeToolTip": "ClientManagementApp\\DatabaseHelper.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAwwB0AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T23:49:01.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Client.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\Client.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\Client.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\Client.cs",
+              "RelativeToolTip": "ClientManagementApp\\Client.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T01:16:43.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EntrepriseForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\EntrepriseForm.Designer.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\EntrepriseForm.Designer.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\EntrepriseForm.Designer.cs",
+              "RelativeToolTip": "ClientManagementApp\\EntrepriseForm.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T01:22:15.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\Form1.cs",
+              "RelativeDocumentMoniker": "ClientManagementApp\\Form1.cs",
+              "ToolTip": "C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\Form1.cs [Design]",
+              "RelativeToolTip": "ClientManagementApp\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T23:17:29.504Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
