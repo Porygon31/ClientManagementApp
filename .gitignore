@@ -76,5 +76,5 @@ mono_crash.*
 *.xls
 *.xlsx
 
-# DB file
+# DB files
 *.db
