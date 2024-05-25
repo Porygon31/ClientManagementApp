@@ -13,6 +13,7 @@ namespace ClientManagementApp
             InitializeComponent();
             listBoxSexe.Items.Add("M");
             listBoxSexe.Items.Add("Mme");
+            listBoxSexe.SelectedIndex = 0;
         }
 
         // Propriétés pour accéder aux informations du client depuis le formulaire principal
