@@ -1,12 +1,9 @@
-﻿// EntrepriseForm.cs
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ClientManagementApp
 {
-    // Formulaire pour ajouter ou modifier les informations d'une entreprise
     public partial class EntrepriseForm : Form
     {
         public EntrepriseForm(List<Client> clients)
@@ -24,22 +21,10 @@ namespace ClientManagementApp
             set { textBoxNomEntreprise.Text = value; }
         }
 
-        public string EntrepriseFonction
-        {
-            get { return textBoxFonction.Text; }
-            set { textBoxFonction.Text = value; }
-        }
-
         public string EntrepriseCodeAPE
         {
             get { return textBoxCodeAPE.Text; }
             set { textBoxCodeAPE.Text = value; }
-        }
-
-        public string EntrepriseCodeNAFFE
-        {
-            get { return textBoxCodeNAFFE.Text; }
-            set { textBoxCodeNAFFE.Text = value; }
         }
 
         public string EntrepriseNumeroSIREN
@@ -82,8 +67,7 @@ namespace ClientManagementApp
         private void buttonSave_Click(object sender, EventArgs e)
         {
             // Valider les entrées (par exemple, vérifier que les champs requis sont remplis)
-            if (string.IsNullOrEmpty(EntrepriseNom) || string.IsNullOrEmpty(EntrepriseFonction) ||
-                string.IsNullOrEmpty(EntrepriseCodeAPE) || string.IsNullOrEmpty(EntrepriseCodeNAFFE) ||
+            if (string.IsNullOrEmpty(EntrepriseNom) || string.IsNullOrEmpty(EntrepriseCodeAPE) ||
                 string.IsNullOrEmpty(EntrepriseNumeroSIREN) || comboBoxClients.SelectedIndex == -1 ||
                 string.IsNullOrEmpty(NumeroUrssaf) || string.IsNullOrEmpty(NumeroSIE) || string.IsNullOrEmpty(NumeroTel))
             {

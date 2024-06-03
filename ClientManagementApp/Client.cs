@@ -1,6 +1,4 @@
-﻿// Client.cs
-
-namespace ClientManagementApp
+﻿namespace ClientManagementApp
 {
     public class Client
     {

@@ -28,11 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewClients = new System.Windows.Forms.DataGridView();
             this.buttonAddClient = new System.Windows.Forms.Button();
             this.buttonEditClient = new System.Windows.Forms.Button();
             this.buttonDeleteClient = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonDeleteEntreprise = new System.Windows.Forms.Button();
             this.buttonEditEntreprise = new System.Windows.Forms.Button();
@@ -48,17 +57,42 @@
             // 
             this.dataGridViewClients.AllowUserToAddRows = false;
             this.dataGridViewClients.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClients.Location = new System.Drawing.Point(20, 18);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClients.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewClients.Location = new System.Drawing.Point(20, 19);
             this.dataGridViewClients.MultiSelect = false;
             this.dataGridViewClients.Name = "dataGridViewClients";
-            this.dataGridViewClients.Size = new System.Drawing.Size(440, 262);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClients.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewClients.Size = new System.Drawing.Size(1158, 335);
             this.dataGridViewClients.TabIndex = 0;
             this.dataGridViewClients.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClients_CellClick);
             // 
             // buttonAddClient
             // 
-            this.buttonAddClient.Location = new System.Drawing.Point(485, 45);
+            this.buttonAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddClient.Location = new System.Drawing.Point(1267, 278);
             this.buttonAddClient.Name = "buttonAddClient";
             this.buttonAddClient.Size = new System.Drawing.Size(119, 23);
             this.buttonAddClient.TabIndex = 1;
@@ -68,7 +102,8 @@
             // 
             // buttonEditClient
             // 
-            this.buttonEditClient.Location = new System.Drawing.Point(485, 83);
+            this.buttonEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEditClient.Location = new System.Drawing.Point(1267, 316);
             this.buttonEditClient.Name = "buttonEditClient";
             this.buttonEditClient.Size = new System.Drawing.Size(119, 23);
             this.buttonEditClient.TabIndex = 2;
@@ -78,7 +113,8 @@
             // 
             // buttonDeleteClient
             // 
-            this.buttonDeleteClient.Location = new System.Drawing.Point(485, 122);
+            this.buttonDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteClient.Location = new System.Drawing.Point(1267, 356);
             this.buttonDeleteClient.Name = "buttonDeleteClient";
             this.buttonDeleteClient.Size = new System.Drawing.Size(119, 23);
             this.buttonDeleteClient.TabIndex = 3;
@@ -88,16 +124,49 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.buttonSearch);
+            this.groupBox1.Controls.Add(this.textBoxSearch);
             this.groupBox1.Controls.Add(this.buttonDeleteClient);
             this.groupBox1.Controls.Add(this.buttonEditClient);
             this.groupBox1.Controls.Add(this.buttonAddClient);
             this.groupBox1.Controls.Add(this.dataGridViewClients);
-            this.groupBox1.Location = new System.Drawing.Point(9, 14);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Location = new System.Drawing.Point(2, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(621, 319);
+            this.groupBox1.Size = new System.Drawing.Size(1399, 392);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Clients";
+            // 
+            // label1
+            // 
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1207, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(179, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Cherchre un client par Nom :";
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Location = new System.Drawing.Point(1243, 90);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(78, 29);
+            this.buttonSearch.TabIndex = 5;
+            this.buttonSearch.Text = "Rechercher";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(1227, 64);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(109, 20);
+            this.textBoxSearch.TabIndex = 4;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // groupBox2
             // 
@@ -105,18 +174,19 @@
             this.groupBox2.Controls.Add(this.buttonEditEntreprise);
             this.groupBox2.Controls.Add(this.buttonAddEntreprise);
             this.groupBox2.Controls.Add(this.dataGridViewEntreprises);
-            this.groupBox2.Location = new System.Drawing.Point(658, 23);
+            this.groupBox2.Location = new System.Drawing.Point(22, 402);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(508, 371);
+            this.groupBox2.Size = new System.Drawing.Size(1393, 412);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Entreprises";
             // 
             // buttonDeleteEntreprise
             // 
-            this.buttonDeleteEntreprise.Location = new System.Drawing.Point(331, 332);
+            this.buttonDeleteEntreprise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteEntreprise.Location = new System.Drawing.Point(1244, 317);
             this.buttonDeleteEntreprise.Name = "buttonDeleteEntreprise";
-            this.buttonDeleteEntreprise.Size = new System.Drawing.Size(138, 22);
+            this.buttonDeleteEntreprise.Size = new System.Drawing.Size(143, 22);
             this.buttonDeleteEntreprise.TabIndex = 3;
             this.buttonDeleteEntreprise.Text = "Supprimer une Entreprise";
             this.buttonDeleteEntreprise.UseVisualStyleBackColor = true;
@@ -124,9 +194,10 @@
             // 
             // buttonEditEntreprise
             // 
-            this.buttonEditEntreprise.Location = new System.Drawing.Point(171, 333);
+            this.buttonEditEntreprise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEditEntreprise.Location = new System.Drawing.Point(1244, 286);
             this.buttonEditEntreprise.Name = "buttonEditEntreprise";
-            this.buttonEditEntreprise.Size = new System.Drawing.Size(117, 21);
+            this.buttonEditEntreprise.Size = new System.Drawing.Size(143, 21);
             this.buttonEditEntreprise.TabIndex = 2;
             this.buttonEditEntreprise.Text = "Editer une Entreprise";
             this.buttonEditEntreprise.UseVisualStyleBackColor = true;
@@ -134,9 +205,10 @@
             // 
             // buttonAddEntreprise
             // 
-            this.buttonAddEntreprise.Location = new System.Drawing.Point(25, 332);
+            this.buttonAddEntreprise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddEntreprise.Location = new System.Drawing.Point(1244, 253);
             this.buttonAddEntreprise.Name = "buttonAddEntreprise";
-            this.buttonAddEntreprise.Size = new System.Drawing.Size(124, 23);
+            this.buttonAddEntreprise.Size = new System.Drawing.Size(143, 23);
             this.buttonAddEntreprise.TabIndex = 1;
             this.buttonAddEntreprise.Text = "Ajouter une Entreprise";
             this.buttonAddEntreprise.UseVisualStyleBackColor = true;
@@ -144,10 +216,37 @@
             // 
             // dataGridViewEntreprises
             // 
+            this.dataGridViewEntreprises.AllowUserToAddRows = false;
+            this.dataGridViewEntreprises.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEntreprises.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewEntreprises.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewEntreprises.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewEntreprises.Location = new System.Drawing.Point(25, 19);
+            this.dataGridViewEntreprises.MultiSelect = false;
             this.dataGridViewEntreprises.Name = "dataGridViewEntreprises";
-            this.dataGridViewEntreprises.Size = new System.Drawing.Size(477, 291);
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEntreprises.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewEntreprises.Size = new System.Drawing.Size(1213, 347);
             this.dataGridViewEntreprises.TabIndex = 0;
             this.dataGridViewEntreprises.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEntreprises_CellClick);
             // 
@@ -155,17 +254,23 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 450);
+            this.ClientSize = new System.Drawing.Size(1412, 828);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Gestionnaire de clientèle";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEntreprises)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label label1;
+
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonSearch;
 
         #endregion
 

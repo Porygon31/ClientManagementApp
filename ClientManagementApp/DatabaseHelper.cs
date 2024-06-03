@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Data;
 using System.Data.SQLite;
 
@@ -8,12 +9,25 @@ namespace ClientManagementApp
     public class DatabaseHelper : IDisposable
     {
         private SQLiteConnection connection;
+        private string databaseFile;
 
-        // Constructeur qui ouvre une connexion à la base de données et initialise les tables si nécessaire
+        // Constructeur qui vérifie l'existence du fichier de base de données et l'initialise si nécessaire
         public DatabaseHelper(string databaseFile)
         {
+            this.databaseFile = databaseFile;
+
+            // Vérifie si le fichier de base de données existe
+            if (!File.Exists(databaseFile))
+            {
+                // Crée le fichier de base de données
+                SQLiteConnection.CreateFile(databaseFile);
+            }
+
+            // Ouvre la connexion à la base de données
             connection = new SQLiteConnection($"Data Source={databaseFile};Version=3;");
             connection.Open();
+
+            // Initialise la base de données (crée les tables si elles n'existent pas)
             InitializeDatabase();
         }
 
@@ -85,9 +99,7 @@ namespace ClientManagementApp
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     ClientId INTEGER NOT NULL,
                     NomEntreprise TEXT NOT NULL,
-                    Fonction TEXT NOT NULL,
                     CodeAPE TEXT NOT NULL,
-                    CodeNAFFE TEXT NOT NULL,
                     NumeroSIREN TEXT NOT NULL,
                     DateDeCreation TEXT NOT NULL,
                     NumeroUrssaf TEXT,
@@ -182,15 +194,13 @@ namespace ClientManagementApp
         }
 
         // Méthode pour ajouter une entreprise à la base de données
-        public int AddEntreprise(string nomEntreprise, string fonction, string codeAPE, string codeNAFFE, string numeroSIREN, string dateDeCreation, string numeroUrssaf, string numeroSIE, string numeroTel, int clientId)
+        public int AddEntreprise(string nomEntreprise, string codeAPE, string numeroSIREN, string dateDeCreation, string numeroUrssaf, string numeroSIE, string numeroTel, int clientId)
         {
-            string query = "INSERT INTO Entreprise (NomEntreprise, Fonction, CodeAPE, CodeNAFFE, NumeroSIREN, DateDeCreation, NumeroUrssaf, NumeroSIE, NumeroTel, ClientId) VALUES (@NomEntreprise, @Fonction, @CodeAPE, @CodeNAFFE, @NumeroSIREN, @DateDeCreation, @NumeroUrssaf, @NumeroSIE, @NumeroTel, @ClientId)";
+            string query = "INSERT INTO Entreprise (NomEntreprise, CodeAPE, NumeroSIREN, DateDeCreation, NumeroUrssaf, NumeroSIE, NumeroTel, ClientId) VALUES (@NomEntreprise, @CodeAPE, @NumeroSIREN, @DateDeCreation, @NumeroUrssaf, @NumeroSIE, @NumeroTel, @ClientId)";
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@NomEntreprise", nomEntreprise);
-                command.Parameters.AddWithValue("@Fonction", fonction);
                 command.Parameters.AddWithValue("@CodeAPE", codeAPE);
-                command.Parameters.AddWithValue("@CodeNAFFE", codeNAFFE);
                 command.Parameters.AddWithValue("@NumeroSIREN", numeroSIREN);
                 command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);
                 command.Parameters.AddWithValue("@NumeroUrssaf", numeroUrssaf);
@@ -205,16 +215,14 @@ namespace ClientManagementApp
         }
 
         // Méthode pour mettre à jour les informations d'une entreprise
-        public void UpdateEntreprise(int id, string nomEntreprise, string fonction, string codeAPE, string codeNAFFE, string numeroSIREN, string dateDeCreation, string numeroUrssaf, string numeroSIE, string numeroTel, int clientId)
+        public void UpdateEntreprise(int id, string nomEntreprise, string codeAPE, string numeroSIREN, string dateDeCreation, string numeroUrssaf, string numeroSIE, string numeroTel, int clientId)
         {
-            string query = "UPDATE Entreprise SET NomEntreprise = @NomEntreprise, Fonction = @Fonction, CodeAPE = @CodeAPE, CodeNAFFE = @CodeNAFFE, NumeroSIREN = @NumeroSIREN, DateDeCreation = @DateDeCreation, NumeroUrssaf = @NumeroUrssaf, NumeroSIE = @NumeroSIE, NumeroTel = @NumeroTel, ClientId = @ClientId WHERE Id = @Id";
+            string query = "UPDATE Entreprise SET NomEntreprise = @NomEntreprise, CodeAPE = @CodeAPE, NumeroSIREN = @NumeroSIREN, DateDeCreation = @DateDeCreation, NumeroUrssaf = @NumeroUrssaf, NumeroSIE = @NumeroSIE, NumeroTel = @NumeroTel, ClientId = @ClientId WHERE Id = @Id";
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@Id", id);
                 command.Parameters.AddWithValue("@NomEntreprise", nomEntreprise);
-                command.Parameters.AddWithValue("@Fonction", fonction);
                 command.Parameters.AddWithValue("@CodeAPE", codeAPE);
-                command.Parameters.AddWithValue("@CodeNAFFE", codeNAFFE);
                 command.Parameters.AddWithValue("@NumeroSIREN", numeroSIREN);
                 command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);
                 command.Parameters.AddWithValue("@NumeroUrssaf", numeroUrssaf);

@@ -3,12 +3,14 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ClientManagementApp
 {
     public partial class Form1 : Form
     {
+        private DataTable clientsTable;
         private DatabaseHelper dbHelper;
 
         public Form1()
@@ -26,7 +28,7 @@ namespace ClientManagementApp
         // Charge les clients depuis la base de données et les affiche dans le DataGridView
         private void LoadClients()
         {
-            DataTable clientsTable = dbHelper.GetClients();
+            clientsTable = dbHelper.GetClients();
             dataGridViewClients.DataSource = clientsTable;
         }
 
@@ -136,7 +138,7 @@ namespace ClientManagementApp
             EntrepriseForm entrepriseForm = new EntrepriseForm(clients);
             if (entrepriseForm.ShowDialog() == DialogResult.OK)
             {
-                dbHelper.AddEntreprise(entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseFonction, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseCodeNAFFE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroUrssaf, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.ClientId);
+                dbHelper.AddEntreprise(entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroUrssaf, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.ClientId);
                 LoadEntreprises();
             }
         }
@@ -152,9 +154,7 @@ namespace ClientManagementApp
                 List<Client> clients = GetClientList();
                 EntrepriseForm entrepriseForm = new EntrepriseForm(clients);
                 entrepriseForm.EntrepriseNom = selectedRow.Cells["NomEntreprise"].Value.ToString();
-                entrepriseForm.EntrepriseFonction = selectedRow.Cells["Fonction"].Value.ToString();
                 entrepriseForm.EntrepriseCodeAPE = selectedRow.Cells["CodeAPE"].Value.ToString();
-                entrepriseForm.EntrepriseCodeNAFFE = selectedRow.Cells["CodeNAFFE"].Value.ToString();
                 entrepriseForm.EntrepriseNumeroSIREN = selectedRow.Cells["NumeroSIREN"].Value.ToString();
                 entrepriseForm.EntrepriseDateDeCreation = selectedRow.Cells["DateDeCreation"].Value.ToString();
                 entrepriseForm.NumeroUrssaf = selectedRow.Cells["NumeroUrssaf"].Value.ToString();
@@ -164,7 +164,7 @@ namespace ClientManagementApp
 
                 if (entrepriseForm.ShowDialog() == DialogResult.OK)
                 {
-                    dbHelper.UpdateEntreprise(entrepriseId, entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseFonction, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseCodeNAFFE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroUrssaf, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.ClientId);
+                    dbHelper.UpdateEntreprise(entrepriseId, entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroUrssaf, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.ClientId);
                     LoadEntreprises();
                 }
             }
@@ -187,6 +187,33 @@ namespace ClientManagementApp
             else
             {
                 MessageBox.Show("Veuillez sélectionner une entreprise à supprimer.");
+            }
+        }
+
+        // Gestionnaire d'événements pour le bouton "Rechercher"
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = textBoxSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                DataTable clientsTable = dbHelper.GetClients();
+                DataView dv = clientsTable.DefaultView;
+                dv.RowFilter = $"Nom LIKE '%{searchTerm}%'";
+                dataGridViewClients.DataSource = dv.ToTable();
+            }
+            else
+            {
+                LoadClients();
+            }
+        }
+
+        // Gestionnaire d'événements pour le changement de texte dans la TextBox de recherche
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxSearch.Text.Trim()))
+            {
+                // Recharge la liste complète des clients si la TextBox est vide
+                LoadClients();
             }
         }
 
