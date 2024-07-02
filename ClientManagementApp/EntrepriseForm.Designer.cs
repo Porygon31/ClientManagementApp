@@ -31,13 +31,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.textBoxNumeroSIE = new System.Windows.Forms.TextBox();
             this.textBoxNumeroTel = new System.Windows.Forms.TextBox();
-            this.textBoxNumeroUrssaf = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxClients = new System.Windows.Forms.ComboBox();
             this.dateTimePickerDateDeCreation = new System.Windows.Forms.DateTimePicker();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxNumeroSIREN = new System.Windows.Forms.TextBox();
             this.textBoxCodeNAFFE = new System.Windows.Forms.TextBox();
             this.textBoxFonction = new System.Windows.Forms.TextBox();
@@ -50,20 +49,29 @@
             this.labelFonctionEntreprise = new System.Windows.Forms.Label();
             this.labelNomEntreprise = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.groupBoxUrssaf = new System.Windows.Forms.GroupBox();
+            this.textBoxMotDePasseUrssaf = new System.Windows.Forms.TextBox();
+            this.textBoxIdentifiantUrssaf = new System.Windows.Forms.TextBox();
+            this.labelMotDePasseUrssaf = new System.Windows.Forms.Label();
+            this.labelIdentifiantUrssaf = new System.Windows.Forms.Label();
+            this.labelNumeroURSSAF = new System.Windows.Forms.Label();
+            this.textBoxNumeroURSSAF = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            this.groupBoxUrssaf.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxNumeroURSSAF);
+            this.groupBox1.Controls.Add(this.labelNumeroURSSAF);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBoxNumeroSIE);
             this.groupBox1.Controls.Add(this.textBoxNumeroTel);
-            this.groupBox1.Controls.Add(this.textBoxNumeroUrssaf);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBoxClients);
             this.groupBox1.Controls.Add(this.dateTimePickerDateDeCreation);
+            this.groupBox1.Controls.Add(this.buttonSave);
             this.groupBox1.Controls.Add(this.textBoxNumeroSIREN);
             this.groupBox1.Controls.Add(this.textBoxCodeNAFFE);
             this.groupBox1.Controls.Add(this.textBoxFonction);
@@ -75,9 +83,9 @@
             this.groupBox1.Controls.Add(this.labelCodeAPE);
             this.groupBox1.Controls.Add(this.labelFonctionEntreprise);
             this.groupBox1.Controls.Add(this.labelNomEntreprise);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(19, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(645, 402);
+            this.groupBox1.Size = new System.Drawing.Size(614, 402);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ajouter une Entreprise";
@@ -100,15 +108,6 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "Numéro SIE";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 310);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Numéro URSSAF";
-            // 
             // textBoxNumeroSIE
             // 
             this.textBoxNumeroSIE.Location = new System.Drawing.Point(128, 337);
@@ -122,13 +121,6 @@
             this.textBoxNumeroTel.Name = "textBoxNumeroTel";
             this.textBoxNumeroTel.Size = new System.Drawing.Size(183, 20);
             this.textBoxNumeroTel.TabIndex = 17;
-            // 
-            // textBoxNumeroUrssaf
-            // 
-            this.textBoxNumeroUrssaf.Location = new System.Drawing.Point(128, 303);
-            this.textBoxNumeroUrssaf.Name = "textBoxNumeroUrssaf";
-            this.textBoxNumeroUrssaf.Size = new System.Drawing.Size(182, 20);
-            this.textBoxNumeroUrssaf.TabIndex = 16;
             // 
             // label1
             // 
@@ -153,6 +145,16 @@
             this.dateTimePickerDateDeCreation.Name = "dateTimePickerDateDeCreation";
             this.dateTimePickerDateDeCreation.Size = new System.Drawing.Size(189, 20);
             this.dateTimePickerDateDeCreation.TabIndex = 13;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(421, 221);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(159, 46);
+            this.buttonSave.TabIndex = 12;
+            this.buttonSave.Text = "Sauvegarder";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // textBoxNumeroSIREN
             // 
@@ -251,19 +253,90 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "label5";
             // 
+            // groupBoxUrssaf
+            // 
+            this.groupBoxUrssaf.Controls.Add(this.textBoxMotDePasseUrssaf);
+            this.groupBoxUrssaf.Controls.Add(this.textBoxIdentifiantUrssaf);
+            this.groupBoxUrssaf.Controls.Add(this.labelMotDePasseUrssaf);
+            this.groupBoxUrssaf.Controls.Add(this.labelIdentifiantUrssaf);
+            this.groupBoxUrssaf.Location = new System.Drawing.Point(652, 26);
+            this.groupBoxUrssaf.Name = "groupBoxUrssaf";
+            this.groupBoxUrssaf.Size = new System.Drawing.Size(381, 134);
+            this.groupBoxUrssaf.TabIndex = 1;
+            this.groupBoxUrssaf.TabStop = false;
+            this.groupBoxUrssaf.Text = "Urssaf";
+            // 
+            // textBoxMotDePasseUrssaf
+            // 
+            this.textBoxMotDePasseUrssaf.Location = new System.Drawing.Point(111, 94);
+            this.textBoxMotDePasseUrssaf.Name = "textBoxMotDePasseUrssaf";
+            this.textBoxMotDePasseUrssaf.Size = new System.Drawing.Size(230, 20);
+            this.textBoxMotDePasseUrssaf.TabIndex = 3;
+            // 
+            // textBoxIdentifiantUrssaf
+            // 
+            this.textBoxIdentifiantUrssaf.Location = new System.Drawing.Point(111, 43);
+            this.textBoxIdentifiantUrssaf.Name = "textBoxIdentifiantUrssaf";
+            this.textBoxIdentifiantUrssaf.Size = new System.Drawing.Size(230, 20);
+            this.textBoxIdentifiantUrssaf.TabIndex = 2;
+            // 
+            // labelMotDePasseUrssaf
+            // 
+            this.labelMotDePasseUrssaf.Location = new System.Drawing.Point(13, 97);
+            this.labelMotDePasseUrssaf.Name = "labelMotDePasseUrssaf";
+            this.labelMotDePasseUrssaf.Size = new System.Drawing.Size(92, 22);
+            this.labelMotDePasseUrssaf.TabIndex = 1;
+            this.labelMotDePasseUrssaf.Text = "Mot de passe";
+            // 
+            // labelIdentifiantUrssaf
+            // 
+            this.labelIdentifiantUrssaf.Location = new System.Drawing.Point(13, 43);
+            this.labelIdentifiantUrssaf.Name = "labelIdentifiantUrssaf";
+            this.labelIdentifiantUrssaf.Size = new System.Drawing.Size(72, 21);
+            this.labelIdentifiantUrssaf.TabIndex = 0;
+            this.labelIdentifiantUrssaf.Text = "Identifiant";
+            // 
+            // labelNumeroURSSAF
+            // 
+            this.labelNumeroURSSAF.AutoSize = true;
+            this.labelNumeroURSSAF.Location = new System.Drawing.Point(7, 307);
+            this.labelNumeroURSSAF.Name = "labelNumeroURSSAF";
+            this.labelNumeroURSSAF.Size = new System.Drawing.Size(90, 13);
+            this.labelNumeroURSSAF.TabIndex = 22;
+            this.labelNumeroURSSAF.Text = "Numéro URSSAF";
+            // 
+            // textBoxNumeroURSSAF
+            // 
+            this.textBoxNumeroURSSAF.Location = new System.Drawing.Point(124, 305);
+            this.textBoxNumeroURSSAF.Name = "textBoxNumeroURSSAF";
+            this.textBoxNumeroURSSAF.Size = new System.Drawing.Size(186, 20);
+            this.textBoxNumeroURSSAF.TabIndex = 23;
+            // 
             // EntrepriseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 563);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(1254, 536);
+            this.Controls.Add(this.groupBoxUrssaf);
             this.Controls.Add(this.groupBox1);
             this.Name = "EntrepriseForm";
             this.Text = "EntrepriseForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBoxUrssaf.ResumeLayout(false);
+            this.groupBoxUrssaf.PerformLayout();
             this.ResumeLayout(false);
+
         }
+
+        private System.Windows.Forms.TextBox textBoxMotDePasseUrssaf;
+
+        private System.Windows.Forms.Label labelMotDePasseUrssaf;
+        private System.Windows.Forms.TextBox textBoxIdentifiantUrssaf;
+
+        private System.Windows.Forms.Label labelIdentifiantUrssaf;
+
+        private System.Windows.Forms.GroupBox groupBoxUrssaf;
 
         private System.Windows.Forms.Label label5;
 
@@ -271,6 +344,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dateTimePickerDateDeCreation;
+        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxNumeroSIREN;
         private System.Windows.Forms.TextBox textBoxCodeNAFFE;
         private System.Windows.Forms.TextBox textBoxFonction;
@@ -286,9 +360,9 @@
         private System.Windows.Forms.ComboBox comboBoxClients;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxNumeroSIE;
         private System.Windows.Forms.TextBox textBoxNumeroTel;
-        private System.Windows.Forms.TextBox textBoxNumeroUrssaf;
+        private System.Windows.Forms.TextBox textBoxNumeroURSSAF;
+        private System.Windows.Forms.Label labelNumeroURSSAF;
     }
 }

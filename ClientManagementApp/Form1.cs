@@ -1,6 +1,4 @@
-﻿// Form1.cs
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -30,6 +28,11 @@ namespace ClientManagementApp
         {
             clientsTable = dbHelper.GetClients();
             dataGridViewClients.DataSource = clientsTable;
+
+            if (dataGridViewClients.Columns.Count > 0)
+            {
+                dataGridViewClients.Columns[0].Visible = false;
+            }
         }
 
         // Charge les entreprises depuis la base de données et les affiche dans le DataGridView
@@ -37,6 +40,13 @@ namespace ClientManagementApp
         {
             DataTable entreprisesTable = dbHelper.GetEntreprises();
             dataGridViewEntreprises.DataSource = entreprisesTable;
+
+            if (dataGridViewEntreprises.Columns.Count > 0)
+            {
+                dataGridViewEntreprises.Columns[0].Visible = false;
+                dataGridViewEntreprises.Columns[1].Visible = false;
+                //dataGridViewEntreprises.Rows[1].Visible = false;
+            }
         }
 
         // Récupère la liste des clients depuis la base de données
@@ -79,7 +89,7 @@ namespace ClientManagementApp
             ClientForm clientForm = new ClientForm();
             if (clientForm.ShowDialog() == DialogResult.OK)
             {
-                int newClientId = dbHelper.AddClient(clientForm.ClientNom, clientForm.ClientPrenom, clientForm.ClientDateDeNaissance, clientForm.ClientLieuDeNaissance, clientForm.ClientSexe, clientForm.AdresseMail, clientForm.NumeroTel, clientForm.NumeroSS, clientForm.NumeroSIP, null);
+                int newClientId = dbHelper.AddClient(clientForm.ClientNom, clientForm.ClientPrenom, clientForm.ClientDateDeNaissance, clientForm.ClientLieuDeNaissance, clientForm.ClientSexe, clientForm.AdresseMail, clientForm.NumeroTel, clientForm.NumeroSS, clientForm.IdentifiantSIP, clientForm.MotDePasseSIP, null);
                 LoadClients();
             }
         }
@@ -101,11 +111,12 @@ namespace ClientManagementApp
                 clientForm.AdresseMail = selectedRow.Cells["AdresseMail"].Value.ToString();
                 clientForm.NumeroTel = selectedRow.Cells["NumeroTel"].Value.ToString();
                 clientForm.NumeroSS = selectedRow.Cells["NumeroSS"].Value.ToString();
-                clientForm.NumeroSIP = selectedRow.Cells["NumeroSIP"].Value.ToString();
+                clientForm.IdentifiantSIP = selectedRow.Cells["IdentifiantSIP"].Value.ToString();
+                clientForm.MotDePasseSIP = selectedRow.Cells["MotDePasseSIP"].Value.ToString();
 
                 if (clientForm.ShowDialog() == DialogResult.OK)
                 {
-                    dbHelper.UpdateClient(clientId, clientForm.ClientNom, clientForm.ClientPrenom, clientForm.ClientDateDeNaissance, clientForm.ClientLieuDeNaissance, clientForm.ClientSexe, clientForm.AdresseMail, clientForm.NumeroTel, clientForm.NumeroSS, clientForm.NumeroSIP, null);
+                    dbHelper.UpdateClient(clientId, clientForm.ClientNom, clientForm.ClientPrenom, clientForm.ClientDateDeNaissance, clientForm.ClientLieuDeNaissance, clientForm.ClientSexe, clientForm.AdresseMail, clientForm.NumeroTel, clientForm.NumeroSS, clientForm.IdentifiantSIP, clientForm.MotDePasseSIP, null);
                     LoadClients();
                 }
             }
@@ -138,7 +149,7 @@ namespace ClientManagementApp
             EntrepriseForm entrepriseForm = new EntrepriseForm(clients);
             if (entrepriseForm.ShowDialog() == DialogResult.OK)
             {
-                dbHelper.AddEntreprise(entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroUrssaf, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.ClientId);
+                dbHelper.AddEntreprise(entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroURSSAF, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
                 LoadEntreprises();
             }
         }
@@ -157,14 +168,16 @@ namespace ClientManagementApp
                 entrepriseForm.EntrepriseCodeAPE = selectedRow.Cells["CodeAPE"].Value.ToString();
                 entrepriseForm.EntrepriseNumeroSIREN = selectedRow.Cells["NumeroSIREN"].Value.ToString();
                 entrepriseForm.EntrepriseDateDeCreation = selectedRow.Cells["DateDeCreation"].Value.ToString();
-                entrepriseForm.NumeroUrssaf = selectedRow.Cells["NumeroUrssaf"].Value.ToString();
+                entrepriseForm.NumeroURSSAF = selectedRow.Cells["NumeroURSSAF"].Value.ToString();
                 entrepriseForm.NumeroSIE = selectedRow.Cells["NumeroSIE"].Value.ToString();
                 entrepriseForm.NumeroTel = selectedRow.Cells["NumeroTel"].Value.ToString();
+                entrepriseForm.IdentifiantUrssaf = selectedRow.Cells["IdentifiantUrssaf"].Value.ToString();
+                entrepriseForm.MotDePasseUrssaf = selectedRow.Cells["MotDePasseUrssaf"].Value.ToString();
                 entrepriseForm.ClientId = Convert.ToInt32(selectedRow.Cells["ClientId"].Value);
 
                 if (entrepriseForm.ShowDialog() == DialogResult.OK)
                 {
-                    dbHelper.UpdateEntreprise(entrepriseId, entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroUrssaf, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.ClientId);
+                    dbHelper.UpdateEntreprise(entrepriseId, entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroURSSAF, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
                     LoadEntreprises();
                 }
             }

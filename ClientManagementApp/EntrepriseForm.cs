@@ -39,10 +39,22 @@ namespace ClientManagementApp
             set { dateTimePickerDateDeCreation.Value = DateTime.Parse(value); }
         }
 
-        public string NumeroUrssaf
+        public string NumeroURSSAF
         {
-            get { return textBoxNumeroUrssaf.Text; }
-            set { textBoxNumeroUrssaf.Text = value; }
+            get { return textBoxNumeroURSSAF.Text; }
+            set { textBoxNumeroURSSAF.Text = value; }
+        }
+
+        public string IdentifiantUrssaf
+        {
+            get { return textBoxIdentifiantUrssaf.Text; }
+            set { textBoxIdentifiantUrssaf.Text = value; }
+        }
+
+        public string MotDePasseUrssaf
+        {
+            get { return textBoxMotDePasseUrssaf.Text; }
+            set { textBoxMotDePasseUrssaf.Text = value; }
         }
 
         public string NumeroSIE
@@ -69,7 +81,7 @@ namespace ClientManagementApp
             // Valider les entrées (par exemple, vérifier que les champs requis sont remplis)
             if (string.IsNullOrEmpty(EntrepriseNom) || string.IsNullOrEmpty(EntrepriseCodeAPE) ||
                 string.IsNullOrEmpty(EntrepriseNumeroSIREN) || comboBoxClients.SelectedIndex == -1 ||
-                string.IsNullOrEmpty(NumeroUrssaf) || string.IsNullOrEmpty(NumeroSIE) || string.IsNullOrEmpty(NumeroTel))
+                string.IsNullOrEmpty(NumeroSIE) || string.IsNullOrEmpty(NumeroTel) || string.IsNullOrEmpty(NumeroURSSAF) || string.IsNullOrEmpty(IdentifiantUrssaf) || string.IsNullOrEmpty(MotDePasseUrssaf))
             {
                 MessageBox.Show("Veuillez remplir tous les champs requis.");
                 return;

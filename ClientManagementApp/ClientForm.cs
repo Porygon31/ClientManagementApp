@@ -65,10 +65,16 @@ namespace ClientManagementApp
             set { textBoxNumeroSS.Text = value; }
         }
 
-        public string NumeroSIP
+        public string IdentifiantSIP
         {
-            get { return textBoxNumeroSIP.Text; }
-            set { textBoxNumeroSIP.Text = value; }
+            get { return textBoxIdentifiantSIP.Text; }
+            set { textBoxIdentifiantSIP.Text = value; }
+        }
+
+        public string MotDePasseSIP
+        {
+            get { return textBoxMotDePasseSIP.Text; }
+            set { textBoxMotDePasseSIP.Text = value; }
         }
 
         // Gestionnaire d'événements pour le bouton "Enregistrer"
@@ -78,7 +84,8 @@ namespace ClientManagementApp
             if (string.IsNullOrEmpty(ClientNom) || string.IsNullOrEmpty(ClientPrenom) ||
                 string.IsNullOrEmpty(ClientDateDeNaissance) || string.IsNullOrEmpty(ClientLieuDeNaissance) ||
                 listBoxSexe.SelectedIndex == -1 || string.IsNullOrEmpty(AdresseMail) ||
-                string.IsNullOrEmpty(NumeroTel) || string.IsNullOrEmpty(NumeroSS) || string.IsNullOrEmpty(NumeroSIP))
+                string.IsNullOrEmpty(NumeroTel) || string.IsNullOrEmpty(NumeroSS) ||
+                string.IsNullOrEmpty(IdentifiantSIP) || string.IsNullOrEmpty(MotDePasseSIP))
             {
                 MessageBox.Show("Veuillez remplir tous les champs requis.");
                 return;
