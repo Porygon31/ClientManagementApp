@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxAdresseMail = new System.Windows.Forms.ComboBox();
+            this.labelEmail = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxNumeroSIE = new System.Windows.Forms.TextBox();
@@ -37,33 +39,40 @@
             this.comboBoxClients = new System.Windows.Forms.ComboBox();
             this.dateTimePickerDateDeCreation = new System.Windows.Forms.DateTimePicker();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.textBoxNumeroSIREN = new System.Windows.Forms.TextBox();
-            this.textBoxCodeNAFFE = new System.Windows.Forms.TextBox();
+            this.textBoxNumeroSIRE = new System.Windows.Forms.TextBox();
             this.textBoxFonction = new System.Windows.Forms.TextBox();
-            this.textBoxCodeAPE = new System.Windows.Forms.TextBox();
+            this.textBoxCodeAPEandNAF = new System.Windows.Forms.TextBox();
             this.textBoxNomEntreprise = new System.Windows.Forms.TextBox();
             this.labelDateDeCreation = new System.Windows.Forms.Label();
-            this.labelNumeroSIREN = new System.Windows.Forms.Label();
-            this.labelCodeNAFFE = new System.Windows.Forms.Label();
-            this.labelCodeAPE = new System.Windows.Forms.Label();
+            this.labelNumeroSIRE = new System.Windows.Forms.Label();
+            this.labelCodeAPEandNAF = new System.Windows.Forms.Label();
             this.labelFonctionEntreprise = new System.Windows.Forms.Label();
             this.labelNomEntreprise = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBoxUrssaf = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.textBoxMotDePasseUrssaf = new System.Windows.Forms.TextBox();
             this.textBoxIdentifiantUrssaf = new System.Windows.Forms.TextBox();
             this.labelMotDePasseUrssaf = new System.Windows.Forms.Label();
             this.labelIdentifiantUrssaf = new System.Windows.Forms.Label();
-            this.labelNumeroURSSAF = new System.Windows.Forms.Label();
-            this.textBoxNumeroURSSAF = new System.Windows.Forms.TextBox();
+            this.linkLabelUrssafME = new System.Windows.Forms.LinkLabel();
+            this.linkLabelUrssaf = new System.Windows.Forms.LinkLabel();
+            this.buttonCopySIE = new System.Windows.Forms.Button();
+            this.buttonCopyTelephone = new System.Windows.Forms.Button();
+            this.buttonCopySiret = new System.Windows.Forms.Button();
+            this.buttonCopyIdentUrssaf = new System.Windows.Forms.Button();
+            this.buttonCopyMdpUrssaf = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxUrssaf.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBoxNumeroURSSAF);
-            this.groupBox1.Controls.Add(this.labelNumeroURSSAF);
+            this.groupBox1.Controls.Add(this.buttonCopySiret);
+            this.groupBox1.Controls.Add(this.buttonCopyTelephone);
+            this.groupBox1.Controls.Add(this.buttonCopySIE);
+            this.groupBox1.Controls.Add(this.comboBoxAdresseMail);
+            this.groupBox1.Controls.Add(this.labelEmail);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBoxNumeroSIE);
@@ -71,29 +80,43 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBoxClients);
             this.groupBox1.Controls.Add(this.dateTimePickerDateDeCreation);
-            this.groupBox1.Controls.Add(this.buttonSave);
-            this.groupBox1.Controls.Add(this.textBoxNumeroSIREN);
-            this.groupBox1.Controls.Add(this.textBoxCodeNAFFE);
+            this.groupBox1.Controls.Add(this.textBoxNumeroSIRE);
             this.groupBox1.Controls.Add(this.textBoxFonction);
-            this.groupBox1.Controls.Add(this.textBoxCodeAPE);
+            this.groupBox1.Controls.Add(this.textBoxCodeAPEandNAF);
             this.groupBox1.Controls.Add(this.textBoxNomEntreprise);
             this.groupBox1.Controls.Add(this.labelDateDeCreation);
-            this.groupBox1.Controls.Add(this.labelNumeroSIREN);
-            this.groupBox1.Controls.Add(this.labelCodeNAFFE);
-            this.groupBox1.Controls.Add(this.labelCodeAPE);
+            this.groupBox1.Controls.Add(this.labelNumeroSIRE);
+            this.groupBox1.Controls.Add(this.labelCodeAPEandNAF);
             this.groupBox1.Controls.Add(this.labelFonctionEntreprise);
             this.groupBox1.Controls.Add(this.labelNomEntreprise);
             this.groupBox1.Location = new System.Drawing.Point(19, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(614, 402);
+            this.groupBox1.Size = new System.Drawing.Size(614, 389);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ajouter une Entreprise";
             // 
+            // comboBoxAdresseMail
+            // 
+            this.comboBoxAdresseMail.FormattingEnabled = true;
+            this.comboBoxAdresseMail.Location = new System.Drawing.Point(119, 179);
+            this.comboBoxAdresseMail.Name = "comboBoxAdresseMail";
+            this.comboBoxAdresseMail.Size = new System.Drawing.Size(189, 21);
+            this.comboBoxAdresseMail.TabIndex = 25;
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Location = new System.Drawing.Point(6, 187);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(67, 13);
+            this.labelEmail.TabIndex = 24;
+            this.labelEmail.Text = "Adresse Mail";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 376);
+            this.label4.Location = new System.Drawing.Point(-3, 348);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 13);
             this.label4.TabIndex = 21;
@@ -102,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 344);
+            this.label3.Location = new System.Drawing.Point(-3, 309);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 20;
@@ -110,14 +133,14 @@
             // 
             // textBoxNumeroSIE
             // 
-            this.textBoxNumeroSIE.Location = new System.Drawing.Point(128, 337);
+            this.textBoxNumeroSIE.Location = new System.Drawing.Point(119, 302);
             this.textBoxNumeroSIE.Name = "textBoxNumeroSIE";
             this.textBoxNumeroSIE.Size = new System.Drawing.Size(183, 20);
             this.textBoxNumeroSIE.TabIndex = 18;
             // 
             // textBoxNumeroTel
             // 
-            this.textBoxNumeroTel.Location = new System.Drawing.Point(128, 376);
+            this.textBoxNumeroTel.Location = new System.Drawing.Point(119, 341);
             this.textBoxNumeroTel.Name = "textBoxNumeroTel";
             this.textBoxNumeroTel.Size = new System.Drawing.Size(183, 20);
             this.textBoxNumeroTel.TabIndex = 17;
@@ -148,7 +171,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(421, 221);
+            this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSave.ForeColor = System.Drawing.Color.Red;
+            this.buttonSave.Location = new System.Drawing.Point(779, 318);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(159, 46);
             this.buttonSave.TabIndex = 12;
@@ -156,19 +181,12 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // textBoxNumeroSIREN
+            // textBoxNumeroSIRE
             // 
-            this.textBoxNumeroSIREN.Location = new System.Drawing.Point(122, 221);
-            this.textBoxNumeroSIREN.Name = "textBoxNumeroSIREN";
-            this.textBoxNumeroSIREN.Size = new System.Drawing.Size(188, 20);
-            this.textBoxNumeroSIREN.TabIndex = 11;
-            // 
-            // textBoxCodeNAFFE
-            // 
-            this.textBoxCodeNAFFE.Location = new System.Drawing.Point(122, 179);
-            this.textBoxCodeNAFFE.Name = "textBoxCodeNAFFE";
-            this.textBoxCodeNAFFE.Size = new System.Drawing.Size(188, 20);
-            this.textBoxCodeNAFFE.TabIndex = 10;
+            this.textBoxNumeroSIRE.Location = new System.Drawing.Point(122, 224);
+            this.textBoxNumeroSIRE.Name = "textBoxNumeroSIRE";
+            this.textBoxNumeroSIRE.Size = new System.Drawing.Size(188, 20);
+            this.textBoxNumeroSIRE.TabIndex = 11;
             // 
             // textBoxFonction
             // 
@@ -177,12 +195,12 @@
             this.textBoxFonction.Size = new System.Drawing.Size(188, 20);
             this.textBoxFonction.TabIndex = 9;
             // 
-            // textBoxCodeAPE
+            // textBoxCodeAPEandNAF
             // 
-            this.textBoxCodeAPE.Location = new System.Drawing.Point(122, 122);
-            this.textBoxCodeAPE.Name = "textBoxCodeAPE";
-            this.textBoxCodeAPE.Size = new System.Drawing.Size(188, 20);
-            this.textBoxCodeAPE.TabIndex = 8;
+            this.textBoxCodeAPEandNAF.Location = new System.Drawing.Point(122, 122);
+            this.textBoxCodeAPEandNAF.Name = "textBoxCodeAPEandNAF";
+            this.textBoxCodeAPEandNAF.Size = new System.Drawing.Size(188, 20);
+            this.textBoxCodeAPEandNAF.TabIndex = 8;
             // 
             // textBoxNomEntreprise
             // 
@@ -200,32 +218,23 @@
             this.labelDateDeCreation.TabIndex = 5;
             this.labelDateDeCreation.Text = "Date de Création";
             // 
-            // labelNumeroSIREN
+            // labelNumeroSIRE
             // 
-            this.labelNumeroSIREN.AutoSize = true;
-            this.labelNumeroSIREN.Location = new System.Drawing.Point(6, 224);
-            this.labelNumeroSIREN.Name = "labelNumeroSIREN";
-            this.labelNumeroSIREN.Size = new System.Drawing.Size(80, 13);
-            this.labelNumeroSIREN.TabIndex = 4;
-            this.labelNumeroSIREN.Text = "Numéro SIREN";
+            this.labelNumeroSIRE.AutoSize = true;
+            this.labelNumeroSIRE.Location = new System.Drawing.Point(6, 224);
+            this.labelNumeroSIRE.Name = "labelNumeroSIRE";
+            this.labelNumeroSIRE.Size = new System.Drawing.Size(72, 13);
+            this.labelNumeroSIRE.TabIndex = 4;
+            this.labelNumeroSIRE.Text = "Numéro SIRE";
             // 
-            // labelCodeNAFFE
+            // labelCodeAPEandNAF
             // 
-            this.labelCodeNAFFE.AutoSize = true;
-            this.labelCodeNAFFE.Location = new System.Drawing.Point(6, 179);
-            this.labelCodeNAFFE.Name = "labelCodeNAFFE";
-            this.labelCodeNAFFE.Size = new System.Drawing.Size(69, 13);
-            this.labelCodeNAFFE.TabIndex = 3;
-            this.labelCodeNAFFE.Text = "Code NAFFE";
-            // 
-            // labelCodeAPE
-            // 
-            this.labelCodeAPE.AutoSize = true;
-            this.labelCodeAPE.Location = new System.Drawing.Point(6, 125);
-            this.labelCodeAPE.Name = "labelCodeAPE";
-            this.labelCodeAPE.Size = new System.Drawing.Size(56, 13);
-            this.labelCodeAPE.TabIndex = 2;
-            this.labelCodeAPE.Text = "Code APE";
+            this.labelCodeAPEandNAF.AutoSize = true;
+            this.labelCodeAPEandNAF.Location = new System.Drawing.Point(6, 125);
+            this.labelCodeAPEandNAF.Name = "labelCodeAPEandNAF";
+            this.labelCodeAPEandNAF.Size = new System.Drawing.Size(113, 13);
+            this.labelCodeAPEandNAF.TabIndex = 2;
+            this.labelCodeAPEandNAF.Text = "Code APE/ Code NAF";
             // 
             // labelFonctionEntreprise
             // 
@@ -255,16 +264,29 @@
             // 
             // groupBoxUrssaf
             // 
+            this.groupBoxUrssaf.Controls.Add(this.buttonCopyMdpUrssaf);
+            this.groupBoxUrssaf.Controls.Add(this.buttonCopyIdentUrssaf);
+            this.groupBoxUrssaf.Controls.Add(this.linkLabelUrssaf);
+            this.groupBoxUrssaf.Controls.Add(this.linkLabelUrssafME);
+            this.groupBoxUrssaf.Controls.Add(this.linkLabel1);
             this.groupBoxUrssaf.Controls.Add(this.textBoxMotDePasseUrssaf);
             this.groupBoxUrssaf.Controls.Add(this.textBoxIdentifiantUrssaf);
             this.groupBoxUrssaf.Controls.Add(this.labelMotDePasseUrssaf);
             this.groupBoxUrssaf.Controls.Add(this.labelIdentifiantUrssaf);
             this.groupBoxUrssaf.Location = new System.Drawing.Point(652, 26);
             this.groupBoxUrssaf.Name = "groupBoxUrssaf";
-            this.groupBoxUrssaf.Size = new System.Drawing.Size(381, 134);
+            this.groupBoxUrssaf.Size = new System.Drawing.Size(407, 192);
             this.groupBoxUrssaf.TabIndex = 1;
             this.groupBoxUrssaf.TabStop = false;
             this.groupBoxUrssaf.Text = "Urssaf";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(26, 154);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(0, 13);
+            this.linkLabel1.TabIndex = 4;
             // 
             // textBoxMotDePasseUrssaf
             // 
@@ -296,31 +318,82 @@
             this.labelIdentifiantUrssaf.TabIndex = 0;
             this.labelIdentifiantUrssaf.Text = "Identifiant";
             // 
-            // labelNumeroURSSAF
+            // linkLabelUrssafME
             // 
-            this.labelNumeroURSSAF.AutoSize = true;
-            this.labelNumeroURSSAF.Location = new System.Drawing.Point(7, 307);
-            this.labelNumeroURSSAF.Name = "labelNumeroURSSAF";
-            this.labelNumeroURSSAF.Size = new System.Drawing.Size(90, 13);
-            this.labelNumeroURSSAF.TabIndex = 22;
-            this.labelNumeroURSSAF.Text = "Numéro URSSAF";
+            this.linkLabelUrssafME.AutoSize = true;
+            this.linkLabelUrssafME.Location = new System.Drawing.Point(27, 154);
+            this.linkLabelUrssafME.Name = "linkLabelUrssafME";
+            this.linkLabelUrssafME.Size = new System.Drawing.Size(69, 13);
+            this.linkLabelUrssafME.TabIndex = 5;
+            this.linkLabelUrssafME.TabStop = true;
+            this.linkLabelUrssafME.Text = "URSSAF ME";
+            this.linkLabelUrssafME.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUrssafME_LinkClicked);
             // 
-            // textBoxNumeroURSSAF
+            // linkLabelUrssaf
             // 
-            this.textBoxNumeroURSSAF.Location = new System.Drawing.Point(124, 305);
-            this.textBoxNumeroURSSAF.Name = "textBoxNumeroURSSAF";
-            this.textBoxNumeroURSSAF.Size = new System.Drawing.Size(186, 20);
-            this.textBoxNumeroURSSAF.TabIndex = 23;
+            this.linkLabelUrssaf.AutoSize = true;
+            this.linkLabelUrssaf.Location = new System.Drawing.Point(170, 152);
+            this.linkLabelUrssaf.Name = "linkLabelUrssaf";
+            this.linkLabelUrssaf.Size = new System.Drawing.Size(50, 13);
+            this.linkLabelUrssaf.TabIndex = 6;
+            this.linkLabelUrssaf.TabStop = true;
+            this.linkLabelUrssaf.Text = "URSSAF";
+            this.linkLabelUrssaf.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUrssaf_LinkClicked);
+            // 
+            // buttonCopySIE
+            // 
+            this.buttonCopySIE.Location = new System.Drawing.Point(320, 300);
+            this.buttonCopySIE.Name = "buttonCopySIE";
+            this.buttonCopySIE.Size = new System.Drawing.Size(29, 29);
+            this.buttonCopySIE.TabIndex = 26;
+            this.buttonCopySIE.UseVisualStyleBackColor = true;
+            this.buttonCopySIE.Click += new System.EventHandler(this.buttonCopySIE_Click);
+            // 
+            // buttonCopyTelephone
+            // 
+            this.buttonCopyTelephone.Location = new System.Drawing.Point(320, 340);
+            this.buttonCopyTelephone.Name = "buttonCopyTelephone";
+            this.buttonCopyTelephone.Size = new System.Drawing.Size(29, 29);
+            this.buttonCopyTelephone.TabIndex = 27;
+            this.buttonCopyTelephone.UseVisualStyleBackColor = true;
+            this.buttonCopyTelephone.Click += new System.EventHandler(this.buttonCopyTelephone_Click);
+            // 
+            // buttonCopySiret
+            // 
+            this.buttonCopySiret.Location = new System.Drawing.Point(320, 217);
+            this.buttonCopySiret.Name = "buttonCopySiret";
+            this.buttonCopySiret.Size = new System.Drawing.Size(29, 29);
+            this.buttonCopySiret.TabIndex = 28;
+            this.buttonCopySiret.UseMnemonic = false;
+            this.buttonCopySiret.UseVisualStyleBackColor = true;
+            // 
+            // buttonCopyIdentUrssaf
+            // 
+            this.buttonCopyIdentUrssaf.Location = new System.Drawing.Point(347, 35);
+            this.buttonCopyIdentUrssaf.Name = "buttonCopyIdentUrssaf";
+            this.buttonCopyIdentUrssaf.Size = new System.Drawing.Size(29, 29);
+            this.buttonCopyIdentUrssaf.TabIndex = 7;
+            this.buttonCopyIdentUrssaf.UseVisualStyleBackColor = true;
+            // 
+            // buttonCopyMdpUrssaf
+            // 
+            this.buttonCopyMdpUrssaf.Location = new System.Drawing.Point(347, 94);
+            this.buttonCopyMdpUrssaf.Name = "buttonCopyMdpUrssaf";
+            this.buttonCopyMdpUrssaf.Size = new System.Drawing.Size(29, 29);
+            this.buttonCopyMdpUrssaf.TabIndex = 8;
+            this.buttonCopyMdpUrssaf.UseVisualStyleBackColor = true;
             // 
             // EntrepriseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1254, 536);
+            this.ClientSize = new System.Drawing.Size(1096, 483);
             this.Controls.Add(this.groupBoxUrssaf);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.buttonSave);
             this.Name = "EntrepriseForm";
             this.Text = "EntrepriseForm";
+            this.Load += new System.EventHandler(this.EntrepriseForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxUrssaf.ResumeLayout(false);
@@ -345,15 +418,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dateTimePickerDateDeCreation;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TextBox textBoxNumeroSIREN;
-        private System.Windows.Forms.TextBox textBoxCodeNAFFE;
+        private System.Windows.Forms.TextBox textBoxNumeroSIRE;
         private System.Windows.Forms.TextBox textBoxFonction;
-        private System.Windows.Forms.TextBox textBoxCodeAPE;
+        private System.Windows.Forms.TextBox textBoxCodeAPEandNAF;
         private System.Windows.Forms.TextBox textBoxNomEntreprise;
         private System.Windows.Forms.Label labelDateDeCreation;
-        private System.Windows.Forms.Label labelNumeroSIREN;
-        private System.Windows.Forms.Label labelCodeNAFFE;
-        private System.Windows.Forms.Label labelCodeAPE;
+        private System.Windows.Forms.Label labelNumeroSIRE;
+        private System.Windows.Forms.Label labelCodeAPEandNAF;
         private System.Windows.Forms.Label labelFonctionEntreprise;
         private System.Windows.Forms.Label labelNomEntreprise;
         private System.Windows.Forms.Label label1;
@@ -362,7 +433,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxNumeroSIE;
         private System.Windows.Forms.TextBox textBoxNumeroTel;
-        private System.Windows.Forms.TextBox textBoxNumeroURSSAF;
-        private System.Windows.Forms.Label labelNumeroURSSAF;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.ComboBox comboBoxAdresseMail;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabelUrssaf;
+        private System.Windows.Forms.LinkLabel linkLabelUrssafME;
+        private System.Windows.Forms.Button buttonCopySIE;
+        private System.Windows.Forms.Button buttonCopyTelephone;
+        private System.Windows.Forms.Button buttonCopySiret;
+        private System.Windows.Forms.Button buttonCopyMdpUrssaf;
+        private System.Windows.Forms.Button buttonCopyIdentUrssaf;
     }
 }

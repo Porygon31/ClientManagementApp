@@ -59,7 +59,8 @@ namespace ClientManagementApp
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Nom = row["Nom"].ToString(),
-                    Prenom = row["Prenom"].ToString()
+                    Prenom = row["Prenom"].ToString(),
+                    AdresseMail = row["AdresseMail"].ToString() // Ajouter la récupération de l'email depuis la base de données
                 });
             }
             return clients;
@@ -89,7 +90,7 @@ namespace ClientManagementApp
             ClientForm clientForm = new ClientForm();
             if (clientForm.ShowDialog() == DialogResult.OK)
             {
-                int newClientId = dbHelper.AddClient(clientForm.ClientNom, clientForm.ClientPrenom, clientForm.ClientDateDeNaissance, clientForm.ClientLieuDeNaissance, clientForm.ClientSexe, clientForm.AdresseMail, clientForm.NumeroTel, clientForm.NumeroSS, clientForm.IdentifiantSIP, clientForm.MotDePasseSIP, null);
+                int newClientId = dbHelper.AddClient(clientForm.ClientNom, clientForm.ClientPrenom, clientForm.ClientDateDeNaissance, clientForm.ClientLieuDeNaissance, clientForm.ClientSexe, clientForm.AdresseMail, clientForm.NumeroTel, clientForm.NumeroTelSecondaire, clientForm.NumeroSS, clientForm.IdentifiantSIP, clientForm.MotDePasseSIP, null);
                 LoadClients();
             }
         }
@@ -110,13 +111,14 @@ namespace ClientManagementApp
                 clientForm.ClientSexe = selectedRow.Cells["Sexe"].Value.ToString();
                 clientForm.AdresseMail = selectedRow.Cells["AdresseMail"].Value.ToString();
                 clientForm.NumeroTel = selectedRow.Cells["NumeroTel"].Value.ToString();
+                clientForm.NumeroTelSecondaire = selectedRow.Cells["NumeroTelSecondaire"].Value.ToString();
                 clientForm.NumeroSS = selectedRow.Cells["NumeroSS"].Value.ToString();
                 clientForm.IdentifiantSIP = selectedRow.Cells["IdentifiantSIP"].Value.ToString();
                 clientForm.MotDePasseSIP = selectedRow.Cells["MotDePasseSIP"].Value.ToString();
 
                 if (clientForm.ShowDialog() == DialogResult.OK)
                 {
-                    dbHelper.UpdateClient(clientId, clientForm.ClientNom, clientForm.ClientPrenom, clientForm.ClientDateDeNaissance, clientForm.ClientLieuDeNaissance, clientForm.ClientSexe, clientForm.AdresseMail, clientForm.NumeroTel, clientForm.NumeroSS, clientForm.IdentifiantSIP, clientForm.MotDePasseSIP, null);
+                    dbHelper.UpdateClient(clientId, clientForm.ClientNom, clientForm.ClientPrenom, clientForm.ClientDateDeNaissance, clientForm.ClientLieuDeNaissance, clientForm.ClientSexe, clientForm.AdresseMail, clientForm.NumeroTel, clientForm.NumeroTelSecondaire, clientForm.NumeroSS, clientForm.IdentifiantSIP, clientForm.MotDePasseSIP, null);
                     LoadClients();
                 }
             }
@@ -149,7 +151,7 @@ namespace ClientManagementApp
             EntrepriseForm entrepriseForm = new EntrepriseForm(clients);
             if (entrepriseForm.ShowDialog() == DialogResult.OK)
             {
-                dbHelper.AddEntreprise(entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroURSSAF, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
+                dbHelper.AddEntreprise(entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseFonction, entrepriseForm.EntrepriseCodeAPEandNAF, entrepriseForm.EntrepriseNumeroSIRE, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
                 LoadEntreprises();
             }
         }
@@ -165,10 +167,10 @@ namespace ClientManagementApp
                 List<Client> clients = GetClientList();
                 EntrepriseForm entrepriseForm = new EntrepriseForm(clients);
                 entrepriseForm.EntrepriseNom = selectedRow.Cells["NomEntreprise"].Value.ToString();
-                entrepriseForm.EntrepriseCodeAPE = selectedRow.Cells["CodeAPE"].Value.ToString();
-                entrepriseForm.EntrepriseNumeroSIREN = selectedRow.Cells["NumeroSIREN"].Value.ToString();
+                entrepriseForm.EntrepriseFonction = selectedRow.Cells["Fonction"].Value.ToString();
+                entrepriseForm.EntrepriseCodeAPEandNAF = selectedRow.Cells["CodeAPEandNAF"].Value.ToString();
+                entrepriseForm.EntrepriseNumeroSIRE = selectedRow.Cells["NumeroSIRE"].Value.ToString();
                 entrepriseForm.EntrepriseDateDeCreation = selectedRow.Cells["DateDeCreation"].Value.ToString();
-                entrepriseForm.NumeroURSSAF = selectedRow.Cells["NumeroURSSAF"].Value.ToString();
                 entrepriseForm.NumeroSIE = selectedRow.Cells["NumeroSIE"].Value.ToString();
                 entrepriseForm.NumeroTel = selectedRow.Cells["NumeroTel"].Value.ToString();
                 entrepriseForm.IdentifiantUrssaf = selectedRow.Cells["IdentifiantUrssaf"].Value.ToString();
@@ -177,7 +179,7 @@ namespace ClientManagementApp
 
                 if (entrepriseForm.ShowDialog() == DialogResult.OK)
                 {
-                    dbHelper.UpdateEntreprise(entrepriseId, entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPE, entrepriseForm.EntrepriseNumeroSIREN, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroURSSAF, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
+                    dbHelper.UpdateEntreprise(entrepriseId, entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseFonction, entrepriseForm.EntrepriseCodeAPEandNAF, entrepriseForm.EntrepriseNumeroSIRE, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
                     LoadEntreprises();
                 }
             }
@@ -204,9 +206,9 @@ namespace ClientManagementApp
         }
 
         // Gestionnaire d'événements pour le bouton "Rechercher"
-        private void buttonSearch_Click(object sender, EventArgs e)
+        private void buttonSearchClientByName_Click(object sender, EventArgs e)
         {
-            string searchTerm = textBoxSearch.Text.Trim();
+            string searchTerm = textBoxSearchClientByName.Text.Trim();
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 DataTable clientsTable = dbHelper.GetClients();
@@ -221,12 +223,28 @@ namespace ClientManagementApp
         }
 
         // Gestionnaire d'événements pour le changement de texte dans la TextBox de recherche
-        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        private void textBoxSearchClientByName_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxSearch.Text.Trim()))
+            if (string.IsNullOrEmpty(textBoxSearchClientByName.Text.Trim()))
             {
                 // Recharge la liste complète des clients si la TextBox est vide
                 LoadClients();
+            }
+        }
+
+        private void buttonSearchEntrepriseByClientName_Click(object sender, EventArgs e)
+        {
+            string searchTerm = textBoxSearchEntrepriseByClientName.Text.Trim();
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                DataTable entreprisesTable = dbHelper.GetEntreprises();
+                DataView dv = entreprisesTable.DefaultView;
+                dv.RowFilter = $"NomClient LIKE '%{searchTerm}%'";
+                dataGridViewEntreprises.DataSource = dv.ToTable();
+            }
+            else
+            {
+                LoadEntreprises();
             }
         }
 
