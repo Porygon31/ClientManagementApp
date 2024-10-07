@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 
 namespace ClientManagementApp
 {
@@ -144,7 +144,7 @@ namespace ClientManagementApp
                 command.Parameters.AddWithValue("@AdresseMail", adresseMail);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
                 command.Parameters.AddWithValue("@NumeroTelSecondaire", numeroTelSecond);
-                command.Parameters.AddWithValue("@NumeroSS", numeroSS);;
+                command.Parameters.AddWithValue("@NumeroSS", numeroSS);
                 command.Parameters.AddWithValue("@IdentifiantSIP", identifiantSIP);
                 command.Parameters.AddWithValue("@MotDePasseSIP", motDePasseSIP);
                 command.Parameters.AddWithValue("@EntrepriseId", entrepriseId.HasValue ? (object)entrepriseId.Value : DBNull.Value);
@@ -211,7 +211,7 @@ namespace ClientManagementApp
                 command.Parameters.AddWithValue("@Fonction", fonctionEntreprise);
                 command.Parameters.AddWithValue("@CodeAPEandNAF", codeAPEandNAF);
                 command.Parameters.AddWithValue("@NumeroSIRE", numeroSIRE);
-                command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);;
+                command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);
                 command.Parameters.AddWithValue("@NumeroSIE", numeroSIE);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
                 command.Parameters.AddWithValue("@IdentifiantUrssaf", identifiantUrssaf);

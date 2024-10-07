@@ -10,6 +10,6 @@
 
         public string NomComplet => $"{Nom} {Prenom}"; // Propriété pour afficher le nom complet
 
-       public string Email => $"{AdresseMail}"; // Propriété pour afficher l'adresse mail
+        public string Email => $"{AdresseMail}"; // Propriété pour afficher l'adresse mail
     }
 }

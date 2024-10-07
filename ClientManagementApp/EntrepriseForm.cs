@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace ClientManagementApp
 {
     public partial class EntrepriseForm : Form
-    { 
+    {
         private void EntrepriseForm_Load(object sender, EventArgs e)
         {
             Image _iconBig = Image.FromFile("C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\copy-icon-png.png");
@@ -131,7 +131,7 @@ namespace ClientManagementApp
             DialogResult = DialogResult.OK;
         }
 
-        
+
 
         private void linkLabelUrssafME_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
