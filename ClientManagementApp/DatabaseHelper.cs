@@ -75,11 +75,12 @@ namespace ClientManagementApp
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Nom TEXT NOT NULL,
                     Prenom TEXT NOT NULL,
-                    DateDeNaissance TEXT NOT NULL,
-                    LieuDeNaissance TEXT NOT NULL,
+                    DateDeNaissance TEXT,
+                    LieuDeNaissance TEXT,
                     Sexe TEXT NOT NULL,
                     AdresseMail TEXT,
                     NumeroTel TEXT,
+                    NumeroTelSecondaire TEXT,
                     NumeroSS TEXT,
                     IdentifiantSIP TEXT,
                     MotDePasseSIP TEXT,
@@ -100,10 +101,10 @@ namespace ClientManagementApp
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     ClientId INTEGER NOT NULL,
                     NomEntreprise TEXT NOT NULL,
-                    CodeAPE TEXT NOT NULL,
-                    NumeroSIREN TEXT NOT NULL,
+                    Fonction TEXT,
+                    CodeAPEandNAF TEXT NOT NULL,
+                    NumeroSIRE TEXT NOT NULL,
                     DateDeCreation TEXT NOT NULL,
-                    NumeroURSSAF TEXT,
                     NumeroSIE TEXT,
                     NumeroTel TEXT,
                     IdentifiantUrssaf TEXT,
@@ -130,9 +131,9 @@ namespace ClientManagementApp
         }
 
         // Méthode pour ajouter un client à la base de données
-        public int AddClient(string nom, string prenom, string dateDeNaissance, string lieuDeNaissance, string sexe, string adresseMail, string numeroTel, string numeroSS, string identifiantSIP, string motDePasseSIP, int? entrepriseId)
+        public int AddClient(string nom, string prenom, string dateDeNaissance, string lieuDeNaissance, string sexe, string adresseMail, string numeroTel, string numeroTelSecond, string numeroSS, string identifiantSIP, string motDePasseSIP, int? entrepriseId)
         {
-            string query = "INSERT INTO Client (Nom, Prenom, DateDeNaissance, LieuDeNaissance, Sexe, AdresseMail, NumeroTel, NumeroSS, IdentifiantSIP, MotDePasseSIP, EntrepriseId) VALUES (@Nom, @Prenom, @DateDeNaissance, @LieuDeNaissance, @Sexe, @AdresseMail, @NumeroTel, @NumeroSS, @IdentifiantSIP, @MotDePasseSIP, @EntrepriseId)";
+            string query = "INSERT INTO Client (Nom, Prenom, DateDeNaissance, LieuDeNaissance, Sexe, AdresseMail, NumeroTel, NumeroTelSecondaire, NumeroSS, IdentifiantSIP, MotDePasseSIP, EntrepriseId) VALUES (@Nom, @Prenom, @DateDeNaissance, @LieuDeNaissance, @Sexe, @AdresseMail, @NumeroTel, @NumeroTelSecondaire, @NumeroSS, @IdentifiantSIP, @MotDePasseSIP, @EntrepriseId)";
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@Nom", nom);
@@ -142,6 +143,7 @@ namespace ClientManagementApp
                 command.Parameters.AddWithValue("@Sexe", sexe);
                 command.Parameters.AddWithValue("@AdresseMail", adresseMail);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
+                command.Parameters.AddWithValue("@NumeroTelSecondaire", numeroTelSecond);
                 command.Parameters.AddWithValue("@NumeroSS", numeroSS);;
                 command.Parameters.AddWithValue("@IdentifiantSIP", identifiantSIP);
                 command.Parameters.AddWithValue("@MotDePasseSIP", motDePasseSIP);
@@ -154,9 +156,9 @@ namespace ClientManagementApp
         }
 
         // Méthode pour mettre à jour les informations d'un client
-        public void UpdateClient(int id, string nom, string prenom, string dateDeNaissance, string lieuDeNaissance, string sexe, string adresseMail, string numeroTel, string numeroSS, string identifiantSIP, string motDePasseSIP, int? entrepriseId)
+        public void UpdateClient(int id, string nom, string prenom, string dateDeNaissance, string lieuDeNaissance, string sexe, string adresseMail, string numeroTel, string numeroTelSec, string numeroSS, string identifiantSIP, string motDePasseSIP, int? entrepriseId)
         {
-            string query = "UPDATE Client SET Nom = @Nom, Prenom = @Prenom, DateDeNaissance = @DateDeNaissance, LieuDeNaissance = @LieuDeNaissance, Sexe = @Sexe, AdresseMail = @AdresseMail, NumeroTel = @NumeroTel, NumeroSS = @NumeroSS, IdentifiantSIP = @IdentifiantSIP, MotDePasseSIP = @MotDePasseSIP, EntrepriseId = @EntrepriseId WHERE Id = @Id";
+            string query = "UPDATE Client SET Nom = @Nom, Prenom = @Prenom, DateDeNaissance = @DateDeNaissance, LieuDeNaissance = @LieuDeNaissance, Sexe = @Sexe, AdresseMail = @AdresseMail, NumeroTel = @NumeroTel, NumeroTelSecondaire = @NumeroTelSecondaire, NumeroSS = @NumeroSS, IdentifiantSIP = @IdentifiantSIP, MotDePasseSIP = @MotDePasseSIP, EntrepriseId = @EntrepriseId WHERE Id = @Id";
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@Id", id);
@@ -167,6 +169,7 @@ namespace ClientManagementApp
                 command.Parameters.AddWithValue("@Sexe", sexe);
                 command.Parameters.AddWithValue("@AdresseMail", adresseMail);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
+                command.Parameters.AddWithValue("@NumeroTelSecondaire", numeroTelSec);
                 command.Parameters.AddWithValue("@NumeroSS", numeroSS);
                 command.Parameters.AddWithValue("@IdentifiantSIP", identifiantSIP);
                 command.Parameters.AddWithValue("@MotDePasseSIP", motDePasseSIP);
@@ -199,16 +202,16 @@ namespace ClientManagementApp
         }
 
         // Méthode pour ajouter une entreprise à la base de données
-        public int AddEntreprise(string nomEntreprise, string codeAPE, string numeroSIREN, string dateDeCreation, string NumeroURSSAF, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
+        public int AddEntreprise(string nomEntreprise, string fonctionEntreprise, string codeAPEandNAF, string numeroSIRE, string dateDeCreation, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
         {
-            string query = "INSERT INTO Entreprise (NomEntreprise, CodeAPE, NumeroSIREN, DateDeCreation, NumeroURSSAF, NumeroSIE, NumeroTel, IdentifiantUrssaf, MotDePasseUrssaf, ClientId) VALUES (@NomEntreprise, @CodeAPE, @NumeroSIREN, @DateDeCreation, @NumeroURSSAF, @NumeroSIE, @NumeroTel, @IdentifiantUrssaf, @MotDePasseUrssaf, @ClientId)";
+            string query = "INSERT INTO Entreprise (NomEntreprise, Fonction, CodeAPEandNAF, NumeroSIRE, DateDeCreation, NumeroSIE, NumeroTel, IdentifiantUrssaf, MotDePasseUrssaf, ClientId) VALUES (@NomEntreprise, @Fonction, @CodeAPEandNAF, @NumeroSIRE, @DateDeCreation, @NumeroSIE, @NumeroTel, @IdentifiantUrssaf, @MotDePasseUrssaf, @ClientId)";
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@NomEntreprise", nomEntreprise);
-                command.Parameters.AddWithValue("@CodeAPE", codeAPE);
-                command.Parameters.AddWithValue("@NumeroSIREN", numeroSIREN);
-                command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);
-                command.Parameters.AddWithValue("@NumeroURSSAF", NumeroURSSAF);
+                command.Parameters.AddWithValue("@Fonction", fonctionEntreprise);
+                command.Parameters.AddWithValue("@CodeAPEandNAF", codeAPEandNAF);
+                command.Parameters.AddWithValue("@NumeroSIRE", numeroSIRE);
+                command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);;
                 command.Parameters.AddWithValue("@NumeroSIE", numeroSIE);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
                 command.Parameters.AddWithValue("@IdentifiantUrssaf", identifiantUrssaf);
@@ -221,17 +224,17 @@ namespace ClientManagementApp
             return newEntrepriseId;
         }
 
-        public void UpdateEntreprise(int id, string nomEntreprise, string codeAPE, string numeroSIREN, string dateDeCreation, string NumeroURSSAF, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
+        public void UpdateEntreprise(int id, string nomEntreprise, string fonctionEntreprise, string codeAPEandNAF, string numeroSIRE, string dateDeCreation, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
         {
-            string query = "UPDATE Entreprise SET NomEntreprise = @NomEntreprise, CodeAPE = @CodeAPE, NumeroSIREN = @NumeroSIREN, DateDeCreation = @DateDeCreation, NumeroURSSAF = @NumeroURSSAF, NumeroSIE = @NumeroSIE, NumeroTel = @NumeroTel, IdentifiantUrssaf = @IdentifiantUrssaf, MotDePasseUrssaf = @MotDePasseUrssaf, ClientId = @ClientId WHERE Id = @Id";
+            string query = "UPDATE Entreprise SET NomEntreprise = @NomEntreprise, Fonction = @Fonction, CodeAPEandNAF = @CodeAPEandNAF, NumeroSIRE = @NumeroSIRE, DateDeCreation = @DateDeCreation, NumeroSIE = @NumeroSIE, NumeroTel = @NumeroTel, IdentifiantUrssaf = @IdentifiantUrssaf, MotDePasseUrssaf = @MotDePasseUrssaf, ClientId = @ClientId WHERE Id = @Id";
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@Id", id);
                 command.Parameters.AddWithValue("@NomEntreprise", nomEntreprise);
-                command.Parameters.AddWithValue("@CodeAPE", codeAPE);
-                command.Parameters.AddWithValue("@NumeroSIREN", numeroSIREN);
+                command.Parameters.AddWithValue("@Fonction", fonctionEntreprise);
+                command.Parameters.AddWithValue("@CodeAPEandNAF", codeAPEandNAF);
+                command.Parameters.AddWithValue("@NumeroSIRE", numeroSIRE);
                 command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);
-                command.Parameters.AddWithValue("@NumeroURSSAF", NumeroURSSAF);
                 command.Parameters.AddWithValue("@NumeroSIE", numeroSIE);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
                 command.Parameters.AddWithValue("@IdentifiantUrssaf", identifiantUrssaf);
