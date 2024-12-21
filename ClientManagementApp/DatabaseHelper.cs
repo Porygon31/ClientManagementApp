@@ -101,7 +101,6 @@ namespace ClientManagementApp
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     ClientId INTEGER NOT NULL,
                     NomEntreprise TEXT NOT NULL,
-                    Fonction TEXT,
                     CodeAPEandNAF TEXT NOT NULL,
                     NumeroSIRE TEXT NOT NULL,
                     DateDeCreation TEXT NOT NULL,
@@ -202,13 +201,12 @@ namespace ClientManagementApp
         }
 
         // Méthode pour ajouter une entreprise à la base de données
-        public int AddEntreprise(string nomEntreprise, string fonctionEntreprise, string codeAPEandNAF, string numeroSIRE, string dateDeCreation, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
+        public int AddEntreprise(string nomEntreprise, string codeAPEandNAF, string numeroSIRE, string dateDeCreation, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
         {
-            string query = "INSERT INTO Entreprise (NomEntreprise, Fonction, CodeAPEandNAF, NumeroSIRE, DateDeCreation, NumeroSIE, NumeroTel, IdentifiantUrssaf, MotDePasseUrssaf, ClientId) VALUES (@NomEntreprise, @Fonction, @CodeAPEandNAF, @NumeroSIRE, @DateDeCreation, @NumeroSIE, @NumeroTel, @IdentifiantUrssaf, @MotDePasseUrssaf, @ClientId)";
+            string query = "INSERT INTO Entreprise (NomEntreprise, CodeAPEandNAF, NumeroSIRE, DateDeCreation, NumeroSIE, NumeroTel, IdentifiantUrssaf, MotDePasseUrssaf, ClientId) VALUES (@NomEntreprise, @CodeAPEandNAF, @NumeroSIRE, @DateDeCreation, @NumeroSIE, @NumeroTel, @IdentifiantUrssaf, @MotDePasseUrssaf, @ClientId)";
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@NomEntreprise", nomEntreprise);
-                command.Parameters.AddWithValue("@Fonction", fonctionEntreprise);
                 command.Parameters.AddWithValue("@CodeAPEandNAF", codeAPEandNAF);
                 command.Parameters.AddWithValue("@NumeroSIRE", numeroSIRE);
                 command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);
@@ -224,14 +222,13 @@ namespace ClientManagementApp
             return newEntrepriseId;
         }
 
-        public void UpdateEntreprise(int id, string nomEntreprise, string fonctionEntreprise, string codeAPEandNAF, string numeroSIRE, string dateDeCreation, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
+        public void UpdateEntreprise(int id, string nomEntreprise, string codeAPEandNAF, string numeroSIRE, string dateDeCreation, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
         {
-            string query = "UPDATE Entreprise SET NomEntreprise = @NomEntreprise, Fonction = @Fonction, CodeAPEandNAF = @CodeAPEandNAF, NumeroSIRE = @NumeroSIRE, DateDeCreation = @DateDeCreation, NumeroSIE = @NumeroSIE, NumeroTel = @NumeroTel, IdentifiantUrssaf = @IdentifiantUrssaf, MotDePasseUrssaf = @MotDePasseUrssaf, ClientId = @ClientId WHERE Id = @Id";
+            string query = "UPDATE Entreprise SET NomEntreprise = @NomEntreprise, CodeAPEandNAF = @CodeAPEandNAF, NumeroSIRE = @NumeroSIRE, DateDeCreation = @DateDeCreation, NumeroSIE = @NumeroSIE, NumeroTel = @NumeroTel, IdentifiantUrssaf = @IdentifiantUrssaf, MotDePasseUrssaf = @MotDePasseUrssaf, ClientId = @ClientId WHERE Id = @Id";
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@Id", id);
                 command.Parameters.AddWithValue("@NomEntreprise", nomEntreprise);
-                command.Parameters.AddWithValue("@Fonction", fonctionEntreprise);
                 command.Parameters.AddWithValue("@CodeAPEandNAF", codeAPEandNAF);
                 command.Parameters.AddWithValue("@NumeroSIRE", numeroSIRE);
                 command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);
