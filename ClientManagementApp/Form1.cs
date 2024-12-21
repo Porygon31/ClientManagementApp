@@ -50,7 +50,7 @@ namespace ClientManagementApp
         }
 
         // Récupère la liste des clients depuis la base de données
-        private List<Client> GetClientList()
+        private List<Client> GetClientList() 
         {
             List<Client> clients = new List<Client>();
             foreach (DataRow row in dbHelper.GetClients().Rows)
@@ -151,7 +151,7 @@ namespace ClientManagementApp
             EntrepriseForm entrepriseForm = new EntrepriseForm(clients);
             if (entrepriseForm.ShowDialog() == DialogResult.OK)
             {
-                dbHelper.AddEntreprise(entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseFonction, entrepriseForm.EntrepriseCodeAPEandNAF, entrepriseForm.EntrepriseNumeroSIRE, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
+                dbHelper.AddEntreprise(entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPEandNAF, entrepriseForm.EntrepriseNumeroSIRE, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
                 LoadEntreprises();
             }
         }
@@ -167,7 +167,6 @@ namespace ClientManagementApp
                 List<Client> clients = GetClientList();
                 EntrepriseForm entrepriseForm = new EntrepriseForm(clients);
                 entrepriseForm.EntrepriseNom = selectedRow.Cells["NomEntreprise"].Value.ToString();
-                entrepriseForm.EntrepriseFonction = selectedRow.Cells["Fonction"].Value.ToString();
                 entrepriseForm.EntrepriseCodeAPEandNAF = selectedRow.Cells["CodeAPEandNAF"].Value.ToString();
                 entrepriseForm.EntrepriseNumeroSIRE = selectedRow.Cells["NumeroSIRE"].Value.ToString();
                 entrepriseForm.EntrepriseDateDeCreation = selectedRow.Cells["DateDeCreation"].Value.ToString();
@@ -179,7 +178,7 @@ namespace ClientManagementApp
 
                 if (entrepriseForm.ShowDialog() == DialogResult.OK)
                 {
-                    dbHelper.UpdateEntreprise(entrepriseId, entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseFonction, entrepriseForm.EntrepriseCodeAPEandNAF, entrepriseForm.EntrepriseNumeroSIRE, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
+                    dbHelper.UpdateEntreprise(entrepriseId, entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPEandNAF, entrepriseForm.EntrepriseNumeroSIRE, entrepriseForm.EntrepriseDateDeCreation, entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel, entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf, entrepriseForm.ClientId);
                     LoadEntreprises();
                 }
             }

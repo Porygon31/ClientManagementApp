@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Reflection;
 
 namespace ClientManagementApp
 {
     public partial class EntrepriseForm : Form
-    { 
+    {
         private void EntrepriseForm_Load(object sender, EventArgs e)
         {
-            Image _iconBig = Image.FromFile("C:\\Users\\Administrateur.JBdu31-PC\\source\\repos\\ClientManagementApp\\ClientManagementApp\\copy-icon-png.png");
+            // Charger l'image depuis les ressources intégrées
+            Image _iconBig = Properties.Resources.copy_icon_png;
             Image iconCopy = ResizeImage(_iconBig, 29, 29);
 
+            // Assigner l'image aux boutons
             buttonCopySIE.Image = iconCopy;
             buttonCopySIE.ImageAlign = ContentAlignment.MiddleCenter;
 
-            buttonCopyTelephone.Image = iconCopy;
-            buttonCopyTelephone.ImageAlign = ContentAlignment.MiddleCenter;
+            buttonCopySiret.Image = iconCopy;
+            buttonCopySiret.ImageAlign = ContentAlignment.MiddleCenter;
 
             buttonCopyTelephone.Image = iconCopy;
             buttonCopyTelephone.ImageAlign = ContentAlignment.MiddleCenter;
@@ -53,12 +56,6 @@ namespace ClientManagementApp
         {
             get { return textBoxNomEntreprise.Text; }
             set { textBoxNomEntreprise.Text = value; }
-        }
-
-        public string EntrepriseFonction
-        {
-            get { return textBoxFonction.Text; }
-            set { textBoxFonction.Text = value; }
         }
 
         public string EntrepriseCodeAPEandNAF
