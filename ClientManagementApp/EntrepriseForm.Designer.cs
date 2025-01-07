@@ -103,6 +103,7 @@
             this.buttonCopySiret.TabIndex = 28;
             this.buttonCopySiret.UseMnemonic = false;
             this.buttonCopySiret.UseVisualStyleBackColor = true;
+            this.buttonCopySiret.Click += new System.EventHandler(this.buttonCopySiret_Click);
             // 
             // buttonCopyTelephone
             // 
@@ -319,6 +320,7 @@
             this.buttonCopyMdpUrssaf.Size = new System.Drawing.Size(39, 36);
             this.buttonCopyMdpUrssaf.TabIndex = 8;
             this.buttonCopyMdpUrssaf.UseVisualStyleBackColor = true;
+            this.buttonCopyMdpUrssaf.Click += new System.EventHandler(this.buttonCopyMdpUrssaf_Click);
             // 
             // buttonCopyIdentUrssaf
             // 
@@ -328,6 +330,7 @@
             this.buttonCopyIdentUrssaf.Size = new System.Drawing.Size(39, 36);
             this.buttonCopyIdentUrssaf.TabIndex = 7;
             this.buttonCopyIdentUrssaf.UseVisualStyleBackColor = true;
+            this.buttonCopyIdentUrssaf.Click += new System.EventHandler(this.buttonCopyIdentUrssaf_Click);
             // 
             // linkLabelUrssaf
             // 
