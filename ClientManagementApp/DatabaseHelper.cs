@@ -142,7 +142,7 @@ namespace ClientManagementApp
                 command.Parameters.AddWithValue("@Sexe", sexe);
                 command.Parameters.AddWithValue("@AdresseMail", adresseMail);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
-                command.Parameters.AddWithValue("@NumeroTelSecondaire", numeroTelSecond);
+                command.Parameters.AddWithValue("@NumeroTelSecondaire", string.IsNullOrWhiteSpace(numeroTelSecond) ? (object)DBNull.Value : numeroTelSecond);
                 command.Parameters.AddWithValue("@NumeroSS", numeroSS);
                 command.Parameters.AddWithValue("@IdentifiantSIP", identifiantSIP);
                 command.Parameters.AddWithValue("@MotDePasseSIP", motDePasseSIP);
@@ -168,7 +168,7 @@ namespace ClientManagementApp
                 command.Parameters.AddWithValue("@Sexe", sexe);
                 command.Parameters.AddWithValue("@AdresseMail", adresseMail);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
-                command.Parameters.AddWithValue("@NumeroTelSecondaire", numeroTelSec);
+                command.Parameters.AddWithValue("@NumeroTelSecondaire", string.IsNullOrWhiteSpace(numeroTelSec) ? (object)DBNull.Value : numeroTelSec);
                 command.Parameters.AddWithValue("@NumeroSS", numeroSS);
                 command.Parameters.AddWithValue("@IdentifiantSIP", identifiantSIP);
                 command.Parameters.AddWithValue("@MotDePasseSIP", motDePasseSIP);
