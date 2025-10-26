@@ -184,5 +184,41 @@ namespace ClientManagementApp
                 MessageBox.Show("Le numéro de téléphone est vide.");
             }
         }
+
+        private void buttonCopySiret_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntrepriseNumeroSIRE))
+            {
+                Clipboard.SetText(EntrepriseNumeroSIRE);
+            }
+            else
+            {
+                MessageBox.Show("Le numéro SIRET est vide.");
+            }
+        }
+
+        private void buttonCopyIdentUrssaf_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(IdentifiantUrssaf))
+            {
+                Clipboard.SetText(IdentifiantUrssaf);
+            }
+            else
+            {
+                MessageBox.Show("L'identifiant Urssaf est vide.");
+            }
+        }
+
+        private void buttonCopyMdpUrssaf_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(MotDePasseUrssaf))
+            {
+                Clipboard.SetText(MotDePasseUrssaf);
+            }
+            else
+            {
+                MessageBox.Show("Le mot de passe Urssaf est vide.");
+            }
+        }
     }
 }
