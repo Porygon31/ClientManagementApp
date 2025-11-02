@@ -220,5 +220,10 @@ namespace ClientManagementApp
                 MessageBox.Show("Le mot de passe Urssaf est vide.");
             }
         }
+
+        private void linkLblSIE_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }

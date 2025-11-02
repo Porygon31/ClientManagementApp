@@ -75,7 +75,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewClients.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewClients.Location = new System.Drawing.Point(27, 23);
-            this.dataGridViewClients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewClients.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewClients.MultiSelect = false;
             this.dataGridViewClients.Name = "dataGridViewClients";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -95,7 +95,7 @@
             // 
             this.buttonAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddClient.Location = new System.Drawing.Point(1908, 290);
-            this.buttonAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddClient.Name = "buttonAddClient";
             this.buttonAddClient.Size = new System.Drawing.Size(159, 28);
             this.buttonAddClient.TabIndex = 1;
@@ -107,7 +107,7 @@
             // 
             this.buttonEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditClient.Location = new System.Drawing.Point(1908, 337);
-            this.buttonEditClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEditClient.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditClient.Name = "buttonEditClient";
             this.buttonEditClient.Size = new System.Drawing.Size(159, 28);
             this.buttonEditClient.TabIndex = 2;
@@ -119,7 +119,7 @@
             // 
             this.buttonDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteClient.Location = new System.Drawing.Point(1908, 386);
-            this.buttonDeleteClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDeleteClient.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDeleteClient.Name = "buttonDeleteClient";
             this.buttonDeleteClient.Size = new System.Drawing.Size(159, 28);
             this.buttonDeleteClient.TabIndex = 3;
@@ -138,10 +138,10 @@
             this.groupBox1.Controls.Add(this.dataGridViewClients);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(3, 5);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(2107, 482);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(1907, 482);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Clients";
@@ -161,7 +161,7 @@
             // 
             this.buttonSearchClientByName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchClientByName.Location = new System.Drawing.Point(1925, 111);
-            this.buttonSearchClientByName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSearchClientByName.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSearchClientByName.Name = "buttonSearchClientByName";
             this.buttonSearchClientByName.Size = new System.Drawing.Size(104, 36);
             this.buttonSearchClientByName.TabIndex = 5;
@@ -172,7 +172,7 @@
             // textBoxSearchClientByName
             // 
             this.textBoxSearchClientByName.Location = new System.Drawing.Point(1873, 68);
-            this.textBoxSearchClientByName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSearchClientByName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSearchClientByName.Name = "textBoxSearchClientByName";
             this.textBoxSearchClientByName.Size = new System.Drawing.Size(224, 22);
             this.textBoxSearchClientByName.TabIndex = 4;
@@ -189,9 +189,9 @@
             this.groupBox2.Controls.Add(this.dataGridViewEntreprises);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(3, 495);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(2107, 507);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
@@ -201,7 +201,7 @@
             // 
             this.buttonSearchEntrepriseByCientName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchEntrepriseByCientName.Location = new System.Drawing.Point(1917, 101);
-            this.buttonSearchEntrepriseByCientName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSearchEntrepriseByCientName.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSearchEntrepriseByCientName.Name = "buttonSearchEntrepriseByCientName";
             this.buttonSearchEntrepriseByCientName.Size = new System.Drawing.Size(148, 32);
             this.buttonSearchEntrepriseByCientName.TabIndex = 6;
@@ -212,7 +212,7 @@
             // textBoxSearchEntrepriseByClientName
             // 
             this.textBoxSearchEntrepriseByClientName.Location = new System.Drawing.Point(1892, 53);
-            this.textBoxSearchEntrepriseByClientName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSearchEntrepriseByClientName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSearchEntrepriseByClientName.Name = "textBoxSearchEntrepriseByClientName";
             this.textBoxSearchEntrepriseByClientName.Size = new System.Drawing.Size(203, 23);
             this.textBoxSearchEntrepriseByClientName.TabIndex = 5;
@@ -232,7 +232,7 @@
             // 
             this.buttonDeleteEntreprise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteEntreprise.Location = new System.Drawing.Point(1908, 298);
-            this.buttonDeleteEntreprise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDeleteEntreprise.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDeleteEntreprise.Name = "buttonDeleteEntreprise";
             this.buttonDeleteEntreprise.Size = new System.Drawing.Size(191, 27);
             this.buttonDeleteEntreprise.TabIndex = 3;
@@ -244,7 +244,7 @@
             // 
             this.buttonEditEntreprise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditEntreprise.Location = new System.Drawing.Point(1908, 260);
-            this.buttonEditEntreprise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEditEntreprise.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEditEntreprise.Name = "buttonEditEntreprise";
             this.buttonEditEntreprise.Size = new System.Drawing.Size(191, 26);
             this.buttonEditEntreprise.TabIndex = 2;
@@ -256,7 +256,7 @@
             // 
             this.buttonAddEntreprise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddEntreprise.Location = new System.Drawing.Point(1908, 219);
-            this.buttonAddEntreprise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddEntreprise.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddEntreprise.Name = "buttonAddEntreprise";
             this.buttonAddEntreprise.Size = new System.Drawing.Size(191, 28);
             this.buttonAddEntreprise.TabIndex = 1;
@@ -270,7 +270,7 @@
             this.dataGridViewEntreprises.AllowUserToDeleteRows = false;
             this.dataGridViewEntreprises.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEntreprises.Location = new System.Drawing.Point(33, 23);
-            this.dataGridViewEntreprises.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewEntreprises.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewEntreprises.MultiSelect = false;
             this.dataGridViewEntreprises.Name = "dataGridViewEntreprises";
             this.dataGridViewEntreprises.RowHeadersWidth = 51;
@@ -285,7 +285,7 @@
             this.ClientSize = new System.Drawing.Size(1882, 953);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Gestionnaire de clientèle";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
