@@ -60,8 +60,17 @@
             this.textBoxIdentifiantUrssaf = new System.Windows.Forms.TextBox();
             this.labelMotDePasseUrssaf = new System.Windows.Forms.Label();
             this.labelIdentifiantUrssaf = new System.Windows.Forms.Label();
+            this.groupBoxSIE = new System.Windows.Forms.GroupBox();
+            this.linkLblSIE = new System.Windows.Forms.LinkLabel();
+            this.btnCopyMdpSIE = new System.Windows.Forms.Button();
+            this.btnCopySIEId = new System.Windows.Forms.Button();
+            this.txtBoxMdpCIE = new System.Windows.Forms.TextBox();
+            this.txtBoxIdCIE = new System.Windows.Forms.TextBox();
+            this.lblMdpSIE = new System.Windows.Forms.Label();
+            this.lblSIEId = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxUrssaf.SuspendLayout();
+            this.groupBoxSIE.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -275,7 +284,7 @@
             // 
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.Red;
-            this.buttonSave.Location = new System.Drawing.Point(1039, 391);
+            this.buttonSave.Location = new System.Drawing.Point(869, 497);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(212, 57);
@@ -342,7 +351,7 @@
             this.linkLabelUrssaf.TabIndex = 6;
             this.linkLabelUrssaf.TabStop = true;
             this.linkLabelUrssaf.Text = "URSSAF";
-            this.linkLabelUrssaf.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUrssaf_LinkClicked);
+
             // 
             // linkLabelUrssafME
             // 
@@ -354,7 +363,7 @@
             this.linkLabelUrssafME.TabIndex = 5;
             this.linkLabelUrssafME.TabStop = true;
             this.linkLabelUrssafME.Text = "URSSAF ME";
-            this.linkLabelUrssafME.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUrssafME_LinkClicked);
+
             // 
             // linkLabel1
             // 
@@ -399,11 +408,89 @@
             this.labelIdentifiantUrssaf.TabIndex = 0;
             this.labelIdentifiantUrssaf.Text = "Identifiant";
             // 
+            // groupBoxSIE
+            // 
+            this.groupBoxSIE.Controls.Add(this.linkLblSIE);
+            this.groupBoxSIE.Controls.Add(this.btnCopyMdpSIE);
+            this.groupBoxSIE.Controls.Add(this.btnCopySIEId);
+            this.groupBoxSIE.Controls.Add(this.txtBoxMdpCIE);
+            this.groupBoxSIE.Controls.Add(this.txtBoxIdCIE);
+            this.groupBoxSIE.Controls.Add(this.lblMdpSIE);
+            this.groupBoxSIE.Controls.Add(this.lblSIEId);
+            this.groupBoxSIE.Location = new System.Drawing.Point(875, 295);
+            this.groupBoxSIE.Name = "groupBoxSIE";
+            this.groupBoxSIE.Size = new System.Drawing.Size(446, 195);
+            this.groupBoxSIE.TabIndex = 13;
+            this.groupBoxSIE.TabStop = false;
+            this.groupBoxSIE.Text = "SIE";
+            // 
+            // linkLblSIE
+            // 
+            this.linkLblSIE.AutoSize = true;
+            this.linkLblSIE.Location = new System.Drawing.Point(47, 131);
+            this.linkLblSIE.Name = "linkLblSIE";
+            this.linkLblSIE.Size = new System.Drawing.Size(28, 16);
+            this.linkLblSIE.TabIndex = 6;
+            this.linkLblSIE.TabStop = true;
+            this.linkLblSIE.Text = "SIE";
+            this.linkLblSIE.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblSIE_LinkClicked);
+            // 
+            // btnCopyMdpSIE
+            // 
+            this.btnCopyMdpSIE.Location = new System.Drawing.Point(349, 77);
+            this.btnCopyMdpSIE.Name = "btnCopyMdpSIE";
+            this.btnCopyMdpSIE.Size = new System.Drawing.Size(63, 25);
+            this.btnCopyMdpSIE.TabIndex = 5;
+            this.btnCopyMdpSIE.Text = "Copier";
+            this.btnCopyMdpSIE.UseVisualStyleBackColor = true;
+            // 
+            // btnCopySIEId
+            // 
+            this.btnCopySIEId.Location = new System.Drawing.Point(349, 21);
+            this.btnCopySIEId.Name = "btnCopySIEId";
+            this.btnCopySIEId.Size = new System.Drawing.Size(63, 28);
+            this.btnCopySIEId.TabIndex = 4;
+            this.btnCopySIEId.Text = "Copier";
+            this.btnCopySIEId.UseVisualStyleBackColor = true;
+            // 
+            // txtBoxMdpCIE
+            // 
+            this.txtBoxMdpCIE.Location = new System.Drawing.Point(122, 83);
+            this.txtBoxMdpCIE.Name = "txtBoxMdpCIE";
+            this.txtBoxMdpCIE.Size = new System.Drawing.Size(202, 22);
+            this.txtBoxMdpCIE.TabIndex = 3;
+            // 
+            // txtBoxIdCIE
+            // 
+            this.txtBoxIdCIE.Location = new System.Drawing.Point(122, 30);
+            this.txtBoxIdCIE.Name = "txtBoxIdCIE";
+            this.txtBoxIdCIE.Size = new System.Drawing.Size(202, 22);
+            this.txtBoxIdCIE.TabIndex = 2;
+            // 
+            // lblMdpSIE
+            // 
+            this.lblMdpSIE.AutoSize = true;
+            this.lblMdpSIE.Location = new System.Drawing.Point(20, 86);
+            this.lblMdpSIE.Name = "lblMdpSIE";
+            this.lblMdpSIE.Size = new System.Drawing.Size(90, 16);
+            this.lblMdpSIE.TabIndex = 1;
+            this.lblMdpSIE.Text = "Mot de Passe";
+            // 
+            // lblSIEId
+            // 
+            this.lblSIEId.AutoSize = true;
+            this.lblSIEId.Location = new System.Drawing.Point(29, 33);
+            this.lblSIEId.Name = "lblSIEId";
+            this.lblSIEId.Size = new System.Drawing.Size(63, 16);
+            this.lblSIEId.TabIndex = 0;
+            this.lblSIEId.Text = "Identifiant";
+            // 
             // EntrepriseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1461, 594);
+            this.Controls.Add(this.groupBoxSIE);
             this.Controls.Add(this.groupBoxUrssaf);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSave);
@@ -415,6 +502,8 @@
             this.groupBox1.PerformLayout();
             this.groupBoxUrssaf.ResumeLayout(false);
             this.groupBoxUrssaf.PerformLayout();
+            this.groupBoxSIE.ResumeLayout(false);
+            this.groupBoxSIE.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -458,5 +547,13 @@
         private System.Windows.Forms.Button buttonCopySiret;
         private System.Windows.Forms.Button buttonCopyMdpUrssaf;
         private System.Windows.Forms.Button buttonCopyIdentUrssaf;
+        private System.Windows.Forms.GroupBox groupBoxSIE;
+        private System.Windows.Forms.Label lblMdpSIE;
+        private System.Windows.Forms.Label lblSIEId;
+        private System.Windows.Forms.TextBox txtBoxMdpCIE;
+        private System.Windows.Forms.TextBox txtBoxIdCIE;
+        private System.Windows.Forms.Button btnCopyMdpSIE;
+        private System.Windows.Forms.Button btnCopySIEId;
+        private System.Windows.Forms.LinkLabel linkLblSIE;
     }
 }

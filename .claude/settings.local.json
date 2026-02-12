@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet build:*)",
+      "Bash(nuget restore:*)",
+      "Bash(\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Community\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\" ClientManagementApp/ClientManagementApp.csproj /t:Restore)",
+      "Bash(where:*)",
+      "Bash(cmd.exe /c \"\"\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Community\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\"\" /version\")",
+      "Bash(cmd.exe:*)",
+      "Bash(cmd.exe /c \"\"\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Enterprise\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\"\" /version\")",
+      "Bash(powershell.exe:*)",
+      "Bash(\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Insiders\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\" ClientManagementApp/ClientManagementApp.csproj /t:Restore /p:RestorePackagesConfig=true)",
+      "Bash(\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Insiders\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\" \"ClientManagementApp\\\\ClientManagementApp.csproj\" /t:Build)",
+      "Bash(\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Insiders\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\" \"C:\\\\Users\\\\jball\\\\source\\\\repos\\\\ClientManagementApp\\\\ClientManagementApp\\\\.claude\\\\worktrees\\\\keen-haslett\\\\ClientManagementApp\\\\ClientManagementApp.csproj\" -t:Build)",
+      "Bash(\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Insiders\\\\MSBuild\\\\Current\\\\Bin\\\\MSBuild.exe\" \"C:\\\\Users\\\\jball\\\\source\\\\repos\\\\ClientManagementApp\\\\ClientManagementApp\\\\.claude\\\\worktrees\\\\keen-haslett\\\\ClientManagementApp\\\\ClientManagementApp.csproj\" -t:Build -p:Configuration=Debug)"
+    ]
+  }
+}

@@ -299,7 +299,7 @@
             this.linkLabelImpot.TabIndex = 4;
             this.linkLabelImpot.TabStop = true;
             this.linkLabelImpot.Text = "Impôt";
-            this.linkLabelImpot.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelImpot_LinkClicked);
+
             // 
             // ClientForm
             // 

@@ -1,77 +1,31 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
 
 namespace ClientManagementApp
 {
-    // Classe pour gérer les opérations de la base de données
     public class DatabaseHelper : IDisposable
     {
         private SQLiteConnection connection;
-        private string databaseFile;
+        private bool disposed = false;
 
-        // Constructeur qui vérifie l'existence du fichier de base de données et l'initialise si nécessaire
         public DatabaseHelper(string databaseFile)
         {
-            this.databaseFile = databaseFile;
-
-            // Vérifie si le fichier de base de données existe
             if (!File.Exists(databaseFile))
             {
-                // Crée le fichier de base de données
                 SQLiteConnection.CreateFile(databaseFile);
             }
 
-            // Ouvre la connexion à la base de données
             connection = new SQLiteConnection($"Data Source={databaseFile};Version=3;");
             connection.Open();
-
-            // Initialise la base de données (crée les tables si elles n'existent pas)
             InitializeDatabase();
         }
 
-        // Méthode pour initialiser la base de données en créant les tables si elles n'existent pas
         private void InitializeDatabase()
         {
-            string checkClientTableQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name='Client';";
-            string checkEntrepriseTableQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name='Entreprise';";
-
-            bool clientTableExists = false;
-            bool entrepriseTableExists = false;
-
-            // Vérifie si la table Client existe
-            using (var command = new SQLiteCommand(checkClientTableQuery, connection))
-            using (var reader = command.ExecuteReader())
-            {
-                clientTableExists = reader.HasRows;
-            }
-
-            // Vérifie si la table Entreprise existe
-            using (var command = new SQLiteCommand(checkEntrepriseTableQuery, connection))
-            using (var reader = command.ExecuteReader())
-            {
-                entrepriseTableExists = reader.HasRows;
-            }
-
-            // Crée la table Client si elle n'existe pas
-            if (!clientTableExists)
-            {
-                CreateClientTable();
-            }
-
-            // Crée la table Entreprise si elle n'existe pas
-            if (!entrepriseTableExists)
-            {
-                CreateEntrepriseTable();
-            }
-        }
-
-        // Méthode pour créer la table Client
-        private void CreateClientTable()
-        {
-            string createClientTableQuery = @"
-                CREATE TABLE Client (
+            string createClientTable = @"
+                CREATE TABLE IF NOT EXISTS Client (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Nom TEXT NOT NULL,
                     Prenom TEXT NOT NULL,
@@ -87,17 +41,8 @@ namespace ClientManagementApp
                     EntrepriseId INTEGER
                 );";
 
-            using (var command = new SQLiteCommand(createClientTableQuery, connection))
-            {
-                command.ExecuteNonQuery();
-            }
-        }
-
-        // Méthode pour créer la table Entreprise
-        private void CreateEntrepriseTable()
-        {
-            string createEntrepriseTableQuery = @"
-                CREATE TABLE Entreprise (
+            string createEntrepriseTable = @"
+                CREATE TABLE IF NOT EXISTS Entreprise (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     ClientId INTEGER NOT NULL,
                     NomEntreprise TEXT NOT NULL,
@@ -111,28 +56,40 @@ namespace ClientManagementApp
                     FOREIGN KEY(ClientId) REFERENCES Client(Id)
                 );";
 
-            using (var command = new SQLiteCommand(createEntrepriseTableQuery, connection))
+            using (var command = new SQLiteCommand(createClientTable, connection))
+            {
+                command.ExecuteNonQuery();
+            }
+
+            using (var command = new SQLiteCommand(createEntrepriseTable, connection))
             {
                 command.ExecuteNonQuery();
             }
         }
 
-        // Méthode pour récupérer les clients de la base de données
+        #region Client
+
         public DataTable GetClients()
         {
             string query = "SELECT * FROM Client";
             using (var adapter = new SQLiteDataAdapter(query, connection))
             {
-                DataTable clientsTable = new DataTable();
+                var clientsTable = new DataTable();
                 adapter.Fill(clientsTable);
                 return clientsTable;
             }
         }
 
-        // Méthode pour ajouter un client à la base de données
-        public int AddClient(string nom, string prenom, string dateDeNaissance, string lieuDeNaissance, string sexe, string adresseMail, string numeroTel, string numeroTelSecond, string numeroSS, string identifiantSIP, string motDePasseSIP, int? entrepriseId)
+        public int AddClient(string nom, string prenom, string dateDeNaissance, string lieuDeNaissance,
+            string sexe, string adresseMail, string numeroTel, string numeroTelSecond,
+            string numeroSS, string identifiantSIP, string motDePasseSIP, int? entrepriseId)
         {
-            string query = "INSERT INTO Client (Nom, Prenom, DateDeNaissance, LieuDeNaissance, Sexe, AdresseMail, NumeroTel, NumeroTelSecondaire, NumeroSS, IdentifiantSIP, MotDePasseSIP, EntrepriseId) VALUES (@Nom, @Prenom, @DateDeNaissance, @LieuDeNaissance, @Sexe, @AdresseMail, @NumeroTel, @NumeroTelSecondaire, @NumeroSS, @IdentifiantSIP, @MotDePasseSIP, @EntrepriseId)";
+            string query = @"INSERT INTO Client
+                (Nom, Prenom, DateDeNaissance, LieuDeNaissance, Sexe, AdresseMail,
+                 NumeroTel, NumeroTelSecondaire, NumeroSS, IdentifiantSIP, MotDePasseSIP, EntrepriseId)
+                VALUES (@Nom, @Prenom, @DateDeNaissance, @LieuDeNaissance, @Sexe, @AdresseMail,
+                        @NumeroTel, @NumeroTelSecondaire, @NumeroSS, @IdentifiantSIP, @MotDePasseSIP, @EntrepriseId)";
+
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@Nom", nom);
@@ -150,14 +107,21 @@ namespace ClientManagementApp
                 command.ExecuteNonQuery();
             }
 
-            int newClientId = (int)connection.LastInsertRowId;
-            return newClientId;
+            return (int)connection.LastInsertRowId;
         }
 
-        // Méthode pour mettre à jour les informations d'un client
-        public void UpdateClient(int id, string nom, string prenom, string dateDeNaissance, string lieuDeNaissance, string sexe, string adresseMail, string numeroTel, string numeroTelSec, string numeroSS, string identifiantSIP, string motDePasseSIP, int? entrepriseId)
+        public void UpdateClient(int id, string nom, string prenom, string dateDeNaissance, string lieuDeNaissance,
+            string sexe, string adresseMail, string numeroTel, string numeroTelSec,
+            string numeroSS, string identifiantSIP, string motDePasseSIP, int? entrepriseId)
         {
-            string query = "UPDATE Client SET Nom = @Nom, Prenom = @Prenom, DateDeNaissance = @DateDeNaissance, LieuDeNaissance = @LieuDeNaissance, Sexe = @Sexe, AdresseMail = @AdresseMail, NumeroTel = @NumeroTel, NumeroTelSecondaire = @NumeroTelSecondaire, NumeroSS = @NumeroSS, IdentifiantSIP = @IdentifiantSIP, MotDePasseSIP = @MotDePasseSIP, EntrepriseId = @EntrepriseId WHERE Id = @Id";
+            string query = @"UPDATE Client SET
+                Nom = @Nom, Prenom = @Prenom, DateDeNaissance = @DateDeNaissance,
+                LieuDeNaissance = @LieuDeNaissance, Sexe = @Sexe, AdresseMail = @AdresseMail,
+                NumeroTel = @NumeroTel, NumeroTelSecondaire = @NumeroTelSecondaire,
+                NumeroSS = @NumeroSS, IdentifiantSIP = @IdentifiantSIP,
+                MotDePasseSIP = @MotDePasseSIP, EntrepriseId = @EntrepriseId
+                WHERE Id = @Id";
+
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@Id", id);
@@ -177,7 +141,6 @@ namespace ClientManagementApp
             }
         }
 
-        // Méthode pour supprimer un client de la base de données
         public void DeleteClient(int id)
         {
             string query = "DELETE FROM Client WHERE Id = @Id";
@@ -188,22 +151,31 @@ namespace ClientManagementApp
             }
         }
 
-        // Méthode pour récupérer les entreprises de la base de données
+        #endregion
+
+        #region Entreprise
+
         public DataTable GetEntreprises()
         {
             string query = "SELECT * FROM Entreprise";
             using (var adapter = new SQLiteDataAdapter(query, connection))
             {
-                DataTable entreprisesTable = new DataTable();
+                var entreprisesTable = new DataTable();
                 adapter.Fill(entreprisesTable);
                 return entreprisesTable;
             }
         }
 
-        // Méthode pour ajouter une entreprise à la base de données
-        public int AddEntreprise(string nomEntreprise, string codeAPEandNAF, string numeroSIRE, string dateDeCreation, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
+        public int AddEntreprise(string nomEntreprise, string codeAPEandNAF, string numeroSIRE,
+            string dateDeCreation, string numeroSIE, string numeroTel,
+            string identifiantUrssaf, string motDePasseUrssaf, int clientId)
         {
-            string query = "INSERT INTO Entreprise (NomEntreprise, CodeAPEandNAF, NumeroSIRE, DateDeCreation, NumeroSIE, NumeroTel, IdentifiantUrssaf, MotDePasseUrssaf, ClientId) VALUES (@NomEntreprise, @CodeAPEandNAF, @NumeroSIRE, @DateDeCreation, @NumeroSIE, @NumeroTel, @IdentifiantUrssaf, @MotDePasseUrssaf, @ClientId)";
+            string query = @"INSERT INTO Entreprise
+                (NomEntreprise, CodeAPEandNAF, NumeroSIRE, DateDeCreation,
+                 NumeroSIE, NumeroTel, IdentifiantUrssaf, MotDePasseUrssaf, ClientId)
+                VALUES (@NomEntreprise, @CodeAPEandNAF, @NumeroSIRE, @DateDeCreation,
+                        @NumeroSIE, @NumeroTel, @IdentifiantUrssaf, @MotDePasseUrssaf, @ClientId)";
+
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@NomEntreprise", nomEntreprise);
@@ -218,13 +190,21 @@ namespace ClientManagementApp
                 command.ExecuteNonQuery();
             }
 
-            int newEntrepriseId = (int)connection.LastInsertRowId;
-            return newEntrepriseId;
+            return (int)connection.LastInsertRowId;
         }
 
-        public void UpdateEntreprise(int id, string nomEntreprise, string codeAPEandNAF, string numeroSIRE, string dateDeCreation, string numeroSIE, string numeroTel, string identifiantUrssaf, string motDePasseUrssaf, int clientId)
+        public void UpdateEntreprise(int id, string nomEntreprise, string codeAPEandNAF, string numeroSIRE,
+            string dateDeCreation, string numeroSIE, string numeroTel,
+            string identifiantUrssaf, string motDePasseUrssaf, int clientId)
         {
-            string query = "UPDATE Entreprise SET NomEntreprise = @NomEntreprise, CodeAPEandNAF = @CodeAPEandNAF, NumeroSIRE = @NumeroSIRE, DateDeCreation = @DateDeCreation, NumeroSIE = @NumeroSIE, NumeroTel = @NumeroTel, IdentifiantUrssaf = @IdentifiantUrssaf, MotDePasseUrssaf = @MotDePasseUrssaf, ClientId = @ClientId WHERE Id = @Id";
+            string query = @"UPDATE Entreprise SET
+                NomEntreprise = @NomEntreprise, CodeAPEandNAF = @CodeAPEandNAF,
+                NumeroSIRE = @NumeroSIRE, DateDeCreation = @DateDeCreation,
+                NumeroSIE = @NumeroSIE, NumeroTel = @NumeroTel,
+                IdentifiantUrssaf = @IdentifiantUrssaf, MotDePasseUrssaf = @MotDePasseUrssaf,
+                ClientId = @ClientId
+                WHERE Id = @Id";
+
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@Id", id);
@@ -241,8 +221,6 @@ namespace ClientManagementApp
             }
         }
 
-
-        // Méthode pour supprimer une entreprise de la base de données
         public void DeleteEntreprise(int id)
         {
             string query = "DELETE FROM Entreprise WHERE Id = @Id";
@@ -253,10 +231,26 @@ namespace ClientManagementApp
             }
         }
 
-        // Méthode pour libérer les ressources de la connexion à la base de données
+        #endregion
+
         public void Dispose()
         {
-            connection.Close();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing && connection != null)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                    connection = null;
+                }
+                disposed = true;
+            }
         }
     }
 }
