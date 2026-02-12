@@ -1,12 +1,10 @@
-﻿// ClientForm.cs
-
 using System;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ClientManagementApp
 {
-    // Formulaire pour ajouter ou modifier les informations d'un client
     public partial class ClientForm : Form
     {
         public ClientForm()
@@ -16,11 +14,12 @@ namespace ClientManagementApp
             listBoxSexe.Items.Add("Mme");
             listBoxSexe.SelectedIndex = 0;
 
-            linkLabelImpot.Links.Add(0, linkLabelImpot.Text.Length, "https://www.impots.gouv.fr/portail/");
-            linkLabelImpot.LinkClicked += new LinkLabelLinkClickedEventHandler(linkLabelImpot_LinkClicked);
+            linkLabelImpot.Links.Add(0, linkLabelImpot.Text.Length, Constantes.UrlImpots);
+            linkLabelImpot.LinkClicked += OuvrirLien;
         }
 
-        // Propriétés pour accéder aux informations du client depuis le formulaire principal
+        #region Propriétés
+
         public string ClientNom
         {
             get { return textBoxNom.Text; }
@@ -35,8 +34,12 @@ namespace ClientManagementApp
 
         public string ClientDateDeNaissance
         {
-            get { return dateTimePickerDateDeNaissance.Value.ToString("yyyy-MM-dd"); }
-            set { dateTimePickerDateDeNaissance.Value = DateTime.Parse(value); }
+            get { return dateTimePickerDateDeNaissance.Value.ToString(Constantes.FormatDate); }
+            set
+            {
+                if (DateTime.TryParse(value, out DateTime date))
+                    dateTimePickerDateDeNaissance.Value = date;
+            }
         }
 
         public string ClientLieuDeNaissance
@@ -87,30 +90,55 @@ namespace ClientManagementApp
             set { textBoxMotDePasseSIP.Text = value; }
         }
 
+        #endregion
 
-        // Gestionnaire d'événements pour le bouton "Enregistrer"
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            // Valider les entrées (par exemple, vérifier que les champs requis sont remplis)
             if (string.IsNullOrEmpty(ClientNom) || string.IsNullOrEmpty(ClientPrenom) ||
                 listBoxSexe.SelectedIndex == -1 || string.IsNullOrEmpty(AdresseMail))
             {
-                MessageBox.Show("Vous devez au moins saisir un Nom, un Prénom et un Genre (Sexe) ainsi qu'une adresse mail");
+                MessageBox.Show(Constantes.ErreurChampsRequisClient);
                 return;
             }
 
-            // Si tout est OK, ferme le formulaire avec un DialogResult.OK
+            if (!EstEmailValide(AdresseMail))
+            {
+                MessageBox.Show(Constantes.ErreurFormatEmail);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(NumeroTel) && !EstTelephoneValide(NumeroTel))
+            {
+                MessageBox.Show(Constantes.ErreurFormatTelephone);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(NumeroTelSecondaire) && !EstTelephoneValide(NumeroTelSecondaire))
+            {
+                MessageBox.Show(Constantes.ErreurFormatTelephone);
+                return;
+            }
+
             DialogResult = DialogResult.OK;
         }
 
-        private void linkLabelImpot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private static void OuvrirLien(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string target = e.Link.LinkData as string;
             if (!string.IsNullOrEmpty(target))
             {
                 Process.Start(new ProcessStartInfo(target));
-
             }
+        }
+
+        private static bool EstEmailValide(string email)
+        {
+            return email.Contains("@") && email.Contains(".");
+        }
+
+        private static bool EstTelephoneValide(string telephone)
+        {
+            return Regex.IsMatch(telephone, @"^\+?[0-9\s]+$");
         }
     }
 }

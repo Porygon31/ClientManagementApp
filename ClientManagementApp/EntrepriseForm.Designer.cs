@@ -351,7 +351,7 @@
             this.linkLabelUrssaf.TabIndex = 6;
             this.linkLabelUrssaf.TabStop = true;
             this.linkLabelUrssaf.Text = "URSSAF";
-            this.linkLabelUrssaf.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUrssaf_LinkClicked);
+
             // 
             // linkLabelUrssafME
             // 
@@ -363,7 +363,7 @@
             this.linkLabelUrssafME.TabIndex = 5;
             this.linkLabelUrssafME.TabStop = true;
             this.linkLabelUrssafME.Text = "URSSAF ME";
-            this.linkLabelUrssafME.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUrssafME_LinkClicked);
+
             // 
             // linkLabel1
             // 

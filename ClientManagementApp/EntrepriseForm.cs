@@ -2,20 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ClientManagementApp
 {
     public partial class EntrepriseForm : Form
     {
+        public EntrepriseForm(List<Client> clients)
+        {
+            InitializeComponent();
+            comboBoxClients.DisplayMember = "NomComplet";
+            comboBoxClients.ValueMember = "Id";
+            comboBoxClients.DataSource = clients;
+
+            comboBoxAdresseMail.DisplayMember = "Email";
+            comboBoxAdresseMail.ValueMember = "Id";
+            comboBoxAdresseMail.DataSource = clients;
+
+            linkLabelUrssafME.Links.Add(0, linkLabelUrssafME.Text.Length, Constantes.UrlUrssafME);
+            linkLabelUrssafME.LinkClicked += OuvrirLien;
+
+            linkLabelUrssaf.Links.Add(0, linkLabelUrssaf.Text.Length, Constantes.UrlUrssaf);
+            linkLabelUrssaf.LinkClicked += OuvrirLien;
+        }
+
         private void EntrepriseForm_Load(object sender, EventArgs e)
         {
-            // Charger l'image depuis les ressources intégrées
-            Image _iconBig = Properties.Resources.copy_icon_png;
-            Image iconCopy = ResizeImage(_iconBig, 29, 29);
+            Image iconBig = Properties.Resources.copy_icon_png;
+            Image iconCopy = RedimensionnerImage(iconBig, 29, 29);
 
-            // Assigner l'image aux boutons
             buttonCopySIE.Image = iconCopy;
             buttonCopySIE.ImageAlign = ContentAlignment.MiddleCenter;
 
@@ -32,26 +48,8 @@ namespace ClientManagementApp
             buttonCopyMdpUrssaf.ImageAlign = ContentAlignment.MiddleCenter;
         }
 
+        #region Propriétés
 
-        public EntrepriseForm(List<Client> clients)
-        {
-            InitializeComponent();
-            comboBoxClients.DisplayMember = "NomComplet"; // Affiche le nom complet du client
-            comboBoxClients.ValueMember = "Id"; // Utilise l'ID du client comme valeur
-            comboBoxClients.DataSource = clients; // Remplit la ComboBox avec la liste des clients
-
-            comboBoxAdresseMail.DisplayMember = "Email"; // Affiche l'adresse mail du client
-            comboBoxAdresseMail.ValueMember = "Id"; // Utilise l'ID du client comme valeur
-            comboBoxAdresseMail.DataSource = clients; // Remplit la ComboBox avec la liste des clients
-
-            linkLabelUrssafME.Links.Add(0, linkLabelUrssafME.Text.Length, "https://autoentrepreneur.urssaf.fr/services/");
-            linkLabelUrssafME.LinkClicked += new LinkLabelLinkClickedEventHandler(linkLabelUrssafME_LinkClicked);
-
-            linkLabelUrssaf.Links.Add(0, linkLabelUrssaf.Text.Length, "https://www.urssaf.fr/accueil/se-connecter.html");
-            linkLabelUrssaf.LinkClicked += new LinkLabelLinkClickedEventHandler(linkLabelUrssaf_LinkClicked);
-        }
-
-        // Propriétés pour accéder aux informations de l'entreprise depuis le formulaire principal
         public string EntrepriseNom
         {
             get { return textBoxNomEntreprise.Text; }
@@ -78,8 +76,12 @@ namespace ClientManagementApp
 
         public string EntrepriseDateDeCreation
         {
-            get { return dateTimePickerDateDeCreation.Value.ToString("yyyy-MM-dd"); }
-            set { dateTimePickerDateDeCreation.Value = DateTime.Parse(value); }
+            get { return dateTimePickerDateDeCreation.Value.ToString(Constantes.FormatDate); }
+            set
+            {
+                if (DateTime.TryParse(value, out DateTime date))
+                    dateTimePickerDateDeCreation.Value = date;
+            }
         }
 
         public string IdentifiantUrssaf
@@ -112,118 +114,101 @@ namespace ClientManagementApp
             set { comboBoxClients.SelectedValue = value; }
         }
 
-        // Gestionnaire d'événements pour le bouton "Enregistrer"
+        #endregion
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            // Valider les entrées (par exemple, vérifier que les champs requis sont remplis)
-            if (string.IsNullOrEmpty(EntrepriseNom) || string.IsNullOrEmpty(EntrepriseCodeAPEandNAF) || string.IsNullOrEmpty(EntrepriseAdresseMail) ||
-                string.IsNullOrEmpty(EntrepriseNumeroSIRE) || comboBoxClients.SelectedIndex == -1 ||
-                string.IsNullOrEmpty(NumeroSIE) || string.IsNullOrEmpty(NumeroTel) || string.IsNullOrEmpty(IdentifiantUrssaf) || string.IsNullOrEmpty(MotDePasseUrssaf))
+            if (string.IsNullOrEmpty(EntrepriseNom) || string.IsNullOrEmpty(EntrepriseCodeAPEandNAF) ||
+                string.IsNullOrEmpty(EntrepriseAdresseMail) || string.IsNullOrEmpty(EntrepriseNumeroSIRE) ||
+                comboBoxClients.SelectedIndex == -1 || string.IsNullOrEmpty(NumeroSIE) ||
+                string.IsNullOrEmpty(NumeroTel) || string.IsNullOrEmpty(IdentifiantUrssaf) ||
+                string.IsNullOrEmpty(MotDePasseUrssaf))
             {
-                MessageBox.Show("Veuillez remplir tous les champs requis.");
+                MessageBox.Show(Constantes.ErreurChampsRequisEntreprise);
                 return;
             }
 
-            // Si tout est OK, ferme le formulaire avec un DialogResult.OK
+            if (!EstTelephoneValide(NumeroTel))
+            {
+                MessageBox.Show(Constantes.ErreurFormatTelephone);
+                return;
+            }
+
             DialogResult = DialogResult.OK;
         }
 
+        #region Copier dans le presse-papier
 
-
-        private void linkLabelUrssafME_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void CopierDansPressePapier(string valeur, string nomChamp)
         {
-            string target = e.Link.LinkData as string;
-            if (!string.IsNullOrEmpty(target))
+            if (!string.IsNullOrEmpty(valeur))
             {
-                Process.Start(new ProcessStartInfo(target));
+                Clipboard.SetText(valeur);
             }
-
-        }
-
-        private void linkLabelUrssaf_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            string target = e.Link.LinkData as string;
-            if (!string.IsNullOrEmpty(target))
+            else
             {
-                Process.Start(new ProcessStartInfo(target));
+                MessageBox.Show(string.Format(Constantes.ErreurChampVide, nomChamp));
             }
-
-        }
-
-        private Image ResizeImage(Image image, int widht, int height)
-        {
-            Bitmap resizedImage = new Bitmap(widht, height);
-            using (Graphics g = Graphics.FromImage(resizedImage))
-            {
-                g.DrawImage(image, 0, 0, widht, height);
-            }
-
-            return resizedImage; ;
         }
 
         private void buttonCopySIE_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(NumeroSIE))
-            {
-                Clipboard.SetText(NumeroSIE);
-            }
-            else
-            {
-                MessageBox.Show("Le numéro SIE est vide.");
-            }
+            CopierDansPressePapier(NumeroSIE, "numéro SIE");
         }
 
         private void buttonCopyTelephone_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(NumeroTel))
-            {
-                Clipboard.SetText(NumeroTel);
-            }
-            else
-            {
-                MessageBox.Show("Le numéro de téléphone est vide.");
-            }
+            CopierDansPressePapier(NumeroTel, "numéro de téléphone");
         }
 
         private void buttonCopySiret_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntrepriseNumeroSIRE))
-            {
-                Clipboard.SetText(EntrepriseNumeroSIRE);
-            }
-            else
-            {
-                MessageBox.Show("Le numéro SIRET est vide.");
-            }
+            CopierDansPressePapier(EntrepriseNumeroSIRE, "numéro SIRET");
         }
 
         private void buttonCopyIdentUrssaf_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(IdentifiantUrssaf))
-            {
-                Clipboard.SetText(IdentifiantUrssaf);
-            }
-            else
-            {
-                MessageBox.Show("L'identifiant Urssaf est vide.");
-            }
+            CopierDansPressePapier(IdentifiantUrssaf, "identifiant Urssaf");
         }
 
         private void buttonCopyMdpUrssaf_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(MotDePasseUrssaf))
+            CopierDansPressePapier(MotDePasseUrssaf, "mot de passe Urssaf");
+        }
+
+        #endregion
+
+        #region Utilitaires
+
+        private static void OuvrirLien(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string target = e.Link.LinkData as string;
+            if (!string.IsNullOrEmpty(target))
             {
-                Clipboard.SetText(MotDePasseUrssaf);
-            }
-            else
-            {
-                MessageBox.Show("Le mot de passe Urssaf est vide.");
+                Process.Start(new ProcessStartInfo(target));
             }
         }
 
+        private static Image RedimensionnerImage(Image image, int width, int height)
+        {
+            var resizedImage = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(resizedImage))
+            {
+                g.DrawImage(image, 0, 0, width, height);
+            }
+            return resizedImage;
+        }
+
+        private static bool EstTelephoneValide(string telephone)
+        {
+            return Regex.IsMatch(telephone, @"^\+?[0-9\s]+$");
+        }
+
+        #endregion
+
         private void linkLblSIE_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            // Handler requis par le Designer - pas d'action
         }
     }
 }
