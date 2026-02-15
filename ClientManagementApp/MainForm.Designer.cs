@@ -47,10 +47,14 @@
             this.buttonEditEntreprise = new System.Windows.Forms.Button();
             this.buttonAddEntreprise = new System.Windows.Forms.Button();
             this.dataGridViewEntreprises = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.aideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guideUtilisationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEntreprises)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewClients
@@ -137,7 +141,7 @@
             this.groupBox1.Controls.Add(this.buttonAddClient);
             this.groupBox1.Controls.Add(this.dataGridViewClients);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Location = new System.Drawing.Point(3, 5);
+            this.groupBox1.Location = new System.Drawing.Point(3, 33);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -188,7 +192,7 @@
             this.groupBox2.Controls.Add(this.buttonAddEntreprise);
             this.groupBox2.Controls.Add(this.dataGridViewEntreprises);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 495);
+            this.groupBox2.Location = new System.Drawing.Point(3, 523);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
@@ -278,14 +282,43 @@
             this.dataGridViewEntreprises.TabIndex = 0;
             this.dataGridViewEntreprises.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEntreprises_CellClick);
             //
+            // menuStrip1
+            //
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aideToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1520, 28);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            //
+            // aideToolStripMenuItem
+            //
+            this.aideToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.guideUtilisationToolStripMenuItem});
+            this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
+            this.aideToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.aideToolStripMenuItem.Text = "Aide";
+            //
+            // guideUtilisationToolStripMenuItem
+            //
+            this.guideUtilisationToolStripMenuItem.Name = "guideUtilisationToolStripMenuItem";
+            this.guideUtilisationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.guideUtilisationToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
+            this.guideUtilisationToolStripMenuItem.Text = "Guide d'utilisation";
+            this.guideUtilisationToolStripMenuItem.Click += new System.EventHandler(this.guideUtilisationToolStripMenuItem_Click);
+            //
             // MainForm
             //
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1520, 1020);
+            this.ClientSize = new System.Drawing.Size(1520, 1048);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Gestionnaire de clientèle";
@@ -295,14 +328,12 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEntreprises)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
-
-        private System.Windows.Forms.Label label1;
-
-        private System.Windows.Forms.TextBox textBoxSearchClientByName;
-        private System.Windows.Forms.Button buttonSearchClientByName;
 
         #endregion
 
@@ -311,6 +342,9 @@
         private System.Windows.Forms.Button buttonEditClient;
         private System.Windows.Forms.Button buttonDeleteClient;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonSearchClientByName;
+        private System.Windows.Forms.TextBox textBoxSearchClientByName;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridViewEntreprises;
         private System.Windows.Forms.Button buttonDeleteEntreprise;
@@ -319,6 +353,9 @@
         private System.Windows.Forms.Label labelSearchEntrepriseByClientName;
         private System.Windows.Forms.TextBox textBoxSearchEntrepriseByClientName;
         private System.Windows.Forms.Button buttonSearchEntrepriseByCientName;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem aideToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guideUtilisationToolStripMenuItem;
     }
 }
 

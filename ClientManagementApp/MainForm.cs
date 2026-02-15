@@ -305,6 +305,11 @@ namespace ClientManagementApp
             }
         }
 
+        private void guideUtilisationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AideForm().ShowDialog();
+        }
+
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             dbHelper.Dispose();
