@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -92,6 +93,21 @@ namespace ClientManagementApp
 
         #endregion
 
+        private void ClientForm_Load(object sender, EventArgs e)
+        {
+            Image iconCopy = RedimensionnerImage(Properties.Resources.copy_icon_png, 24, 24);
+
+            buttonCopyNom.Image = iconCopy;
+            buttonCopyPrenom.Image = iconCopy;
+            buttonCopyLieuDeNaissance.Image = iconCopy;
+            buttonCopyAdresseMail.Image = iconCopy;
+            buttonCopyNumeroTel.Image = iconCopy;
+            buttonCopyNumeroTelSecondaire.Image = iconCopy;
+            buttonCopyNumeroSS.Image = iconCopy;
+            buttonCopyIdentifiantSIP.Image = iconCopy;
+            buttonCopyMotDePasseSIP.Image = iconCopy;
+        }
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(ClientNom) || string.IsNullOrEmpty(ClientPrenom) ||
@@ -139,6 +155,69 @@ namespace ClientManagementApp
         private static bool EstTelephoneValide(string telephone)
         {
             return Regex.IsMatch(telephone, @"^\+?[0-9\s]+$");
+        }
+
+        private void CopierDansPressePapier(string valeur, string nomChamp)
+        {
+            if (!string.IsNullOrEmpty(valeur))
+                Clipboard.SetText(valeur);
+            else
+                MessageBox.Show(string.Format(Constantes.ErreurChampVide, nomChamp));
+        }
+
+        private static Image RedimensionnerImage(Image image, int width, int height)
+        {
+            var resizedImage = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(resizedImage))
+            {
+                g.DrawImage(image, 0, 0, width, height);
+            }
+            return resizedImage;
+        }
+
+        private void buttonCopyNom_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(ClientNom, "Nom");
+        }
+
+        private void buttonCopyPrenom_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(ClientPrenom, "Prénom");
+        }
+
+        private void buttonCopyLieuDeNaissance_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(ClientLieuDeNaissance, "Lieu de Naissance");
+        }
+
+        private void buttonCopyAdresseMail_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(AdresseMail, "Adresse Mail");
+        }
+
+        private void buttonCopyNumeroTel_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(NumeroTel, "Numéro de Téléphone");
+        }
+
+        private void buttonCopyNumeroTelSecondaire_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(NumeroTelSecondaire, "Téléphone Secondaire");
+        }
+
+        private void buttonCopyNumeroSS_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(NumeroSS, "Numéro SS");
+        }
+
+        private void buttonCopyIdentifiantSIP_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(IdentifiantSIP, "Identifiant SIP");
+        }
+
+        private void buttonCopyMotDePasseSIP_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(MotDePasseSIP, "Mot de Passe SIP");
         }
     }
 }

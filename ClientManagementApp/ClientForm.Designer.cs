@@ -54,12 +54,28 @@
             this.textBoxIdentifiantSIP = new System.Windows.Forms.TextBox();
             this.labelIdentifiantSIP = new System.Windows.Forms.Label();
             this.linkLabelImpot = new System.Windows.Forms.LinkLabel();
+            this.buttonCopyNom = new System.Windows.Forms.Button();
+            this.buttonCopyPrenom = new System.Windows.Forms.Button();
+            this.buttonCopyLieuDeNaissance = new System.Windows.Forms.Button();
+            this.buttonCopyAdresseMail = new System.Windows.Forms.Button();
+            this.buttonCopyNumeroTel = new System.Windows.Forms.Button();
+            this.buttonCopyNumeroTelSecondaire = new System.Windows.Forms.Button();
+            this.buttonCopyNumeroSS = new System.Windows.Forms.Button();
+            this.buttonCopyIdentifiantSIP = new System.Windows.Forms.Button();
+            this.buttonCopyMotDePasseSIP = new System.Windows.Forms.Button();
             this.groupBoxAddClient.SuspendLayout();
             this.groupBoxSIP.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxAddClient
             // 
+            this.groupBoxAddClient.Controls.Add(this.buttonCopyNom);
+            this.groupBoxAddClient.Controls.Add(this.buttonCopyPrenom);
+            this.groupBoxAddClient.Controls.Add(this.buttonCopyLieuDeNaissance);
+            this.groupBoxAddClient.Controls.Add(this.buttonCopyAdresseMail);
+            this.groupBoxAddClient.Controls.Add(this.buttonCopyNumeroTel);
+            this.groupBoxAddClient.Controls.Add(this.buttonCopyNumeroTelSecondaire);
+            this.groupBoxAddClient.Controls.Add(this.buttonCopyNumeroSS);
             this.groupBoxAddClient.Controls.Add(this.textBoxNumeroTelSecondaire);
             this.groupBoxAddClient.Controls.Add(this.label9);
             this.groupBoxAddClient.Controls.Add(this.label8);
@@ -245,6 +261,8 @@
             // 
             // groupBoxSIP
             // 
+            this.groupBoxSIP.Controls.Add(this.buttonCopyIdentifiantSIP);
+            this.groupBoxSIP.Controls.Add(this.buttonCopyMotDePasseSIP);
             this.groupBoxSIP.Controls.Add(this.linkLabelImpot);
             this.groupBoxSIP.Controls.Add(this.textBoxMotDePasseSIP);
             this.groupBoxSIP.Controls.Add(this.labelMotDePasseSIP);
@@ -300,9 +318,90 @@
             this.linkLabelImpot.TabStop = true;
             this.linkLabelImpot.Text = "Impôt";
 
-            // 
+            //
+            // buttonCopyNom
+            //
+            this.buttonCopyNom.Location = new System.Drawing.Point(365, 29);
+            this.buttonCopyNom.Name = "buttonCopyNom";
+            this.buttonCopyNom.Size = new System.Drawing.Size(30, 24);
+            this.buttonCopyNom.TabIndex = 30;
+            this.buttonCopyNom.UseVisualStyleBackColor = true;
+            this.buttonCopyNom.Click += new System.EventHandler(this.buttonCopyNom_Click);
+            //
+            // buttonCopyPrenom
+            //
+            this.buttonCopyPrenom.Location = new System.Drawing.Point(365, 61);
+            this.buttonCopyPrenom.Name = "buttonCopyPrenom";
+            this.buttonCopyPrenom.Size = new System.Drawing.Size(30, 24);
+            this.buttonCopyPrenom.TabIndex = 31;
+            this.buttonCopyPrenom.UseVisualStyleBackColor = true;
+            this.buttonCopyPrenom.Click += new System.EventHandler(this.buttonCopyPrenom_Click);
+            //
+            // buttonCopyLieuDeNaissance
+            //
+            this.buttonCopyLieuDeNaissance.Location = new System.Drawing.Point(365, 123);
+            this.buttonCopyLieuDeNaissance.Name = "buttonCopyLieuDeNaissance";
+            this.buttonCopyLieuDeNaissance.Size = new System.Drawing.Size(30, 24);
+            this.buttonCopyLieuDeNaissance.TabIndex = 32;
+            this.buttonCopyLieuDeNaissance.UseVisualStyleBackColor = true;
+            this.buttonCopyLieuDeNaissance.Click += new System.EventHandler(this.buttonCopyLieuDeNaissance_Click);
+            //
+            // buttonCopyAdresseMail
+            //
+            this.buttonCopyAdresseMail.Location = new System.Drawing.Point(365, 191);
+            this.buttonCopyAdresseMail.Name = "buttonCopyAdresseMail";
+            this.buttonCopyAdresseMail.Size = new System.Drawing.Size(30, 24);
+            this.buttonCopyAdresseMail.TabIndex = 33;
+            this.buttonCopyAdresseMail.UseVisualStyleBackColor = true;
+            this.buttonCopyAdresseMail.Click += new System.EventHandler(this.buttonCopyAdresseMail_Click);
+            //
+            // buttonCopyNumeroTel
+            //
+            this.buttonCopyNumeroTel.Location = new System.Drawing.Point(365, 228);
+            this.buttonCopyNumeroTel.Name = "buttonCopyNumeroTel";
+            this.buttonCopyNumeroTel.Size = new System.Drawing.Size(30, 24);
+            this.buttonCopyNumeroTel.TabIndex = 34;
+            this.buttonCopyNumeroTel.UseVisualStyleBackColor = true;
+            this.buttonCopyNumeroTel.Click += new System.EventHandler(this.buttonCopyNumeroTel_Click);
+            //
+            // buttonCopyNumeroTelSecondaire
+            //
+            this.buttonCopyNumeroTelSecondaire.Location = new System.Drawing.Point(365, 267);
+            this.buttonCopyNumeroTelSecondaire.Name = "buttonCopyNumeroTelSecondaire";
+            this.buttonCopyNumeroTelSecondaire.Size = new System.Drawing.Size(30, 24);
+            this.buttonCopyNumeroTelSecondaire.TabIndex = 35;
+            this.buttonCopyNumeroTelSecondaire.UseVisualStyleBackColor = true;
+            this.buttonCopyNumeroTelSecondaire.Click += new System.EventHandler(this.buttonCopyNumeroTelSecondaire_Click);
+            //
+            // buttonCopyNumeroSS
+            //
+            this.buttonCopyNumeroSS.Location = new System.Drawing.Point(365, 310);
+            this.buttonCopyNumeroSS.Name = "buttonCopyNumeroSS";
+            this.buttonCopyNumeroSS.Size = new System.Drawing.Size(30, 24);
+            this.buttonCopyNumeroSS.TabIndex = 36;
+            this.buttonCopyNumeroSS.UseVisualStyleBackColor = true;
+            this.buttonCopyNumeroSS.Click += new System.EventHandler(this.buttonCopyNumeroSS_Click);
+            //
+            // buttonCopyIdentifiantSIP
+            //
+            this.buttonCopyIdentifiantSIP.Location = new System.Drawing.Point(317, 30);
+            this.buttonCopyIdentifiantSIP.Name = "buttonCopyIdentifiantSIP";
+            this.buttonCopyIdentifiantSIP.Size = new System.Drawing.Size(30, 24);
+            this.buttonCopyIdentifiantSIP.TabIndex = 37;
+            this.buttonCopyIdentifiantSIP.UseVisualStyleBackColor = true;
+            this.buttonCopyIdentifiantSIP.Click += new System.EventHandler(this.buttonCopyIdentifiantSIP_Click);
+            //
+            // buttonCopyMotDePasseSIP
+            //
+            this.buttonCopyMotDePasseSIP.Location = new System.Drawing.Point(317, 79);
+            this.buttonCopyMotDePasseSIP.Name = "buttonCopyMotDePasseSIP";
+            this.buttonCopyMotDePasseSIP.Size = new System.Drawing.Size(30, 24);
+            this.buttonCopyMotDePasseSIP.TabIndex = 38;
+            this.buttonCopyMotDePasseSIP.UseVisualStyleBackColor = true;
+            this.buttonCopyMotDePasseSIP.Click += new System.EventHandler(this.buttonCopyMotDePasseSIP_Click);
+            //
             // ClientForm
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1068, 512);
@@ -311,6 +410,7 @@
             this.Controls.Add(this.buttonSave);
             this.Name = "ClientForm";
             this.Text = "ClientForm";
+            this.Load += new System.EventHandler(this.ClientForm_Load);
             this.groupBoxAddClient.ResumeLayout(false);
             this.groupBoxAddClient.PerformLayout();
             this.groupBoxSIP.ResumeLayout(false);
@@ -347,5 +447,14 @@
         private System.Windows.Forms.TextBox textBoxNumeroTelSecondaire;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.LinkLabel linkLabelImpot;
+        private System.Windows.Forms.Button buttonCopyNom;
+        private System.Windows.Forms.Button buttonCopyPrenom;
+        private System.Windows.Forms.Button buttonCopyLieuDeNaissance;
+        private System.Windows.Forms.Button buttonCopyAdresseMail;
+        private System.Windows.Forms.Button buttonCopyNumeroTel;
+        private System.Windows.Forms.Button buttonCopyNumeroTelSecondaire;
+        private System.Windows.Forms.Button buttonCopyNumeroSS;
+        private System.Windows.Forms.Button buttonCopyIdentifiantSIP;
+        private System.Windows.Forms.Button buttonCopyMotDePasseSIP;
     }
 }
