@@ -7,7 +7,8 @@ namespace ClientManagementApp
         public const string FormatDate = "yyyy-MM-dd";
 
         // URLs
-        public const string UrlImpots = "https://www.impots.gouv.fr/portail/";
+        public const string UrlImpots = "https://cfspart-idp.impots.gouv.fr/oauth2/";
+        public const string UrlSIE = "https://cfspro-idp.impots.gouv.fr/oauth2/";
         public const string UrlUrssafME = "https://autoentrepreneur.urssaf.fr/services/";
         public const string UrlUrssaf = "https://www.urssaf.fr/accueil/se-connecter.html";
 

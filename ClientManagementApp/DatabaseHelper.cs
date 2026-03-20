@@ -49,10 +49,11 @@ namespace ClientManagementApp
                     CodeAPEandNAF TEXT NOT NULL,
                     NumeroSIRE TEXT NOT NULL,
                     DateDeCreation TEXT NOT NULL,
-                    NumeroSIE TEXT,
                     NumeroTel TEXT,
                     IdentifiantUrssaf TEXT,
                     MotDePasseUrssaf TEXT,
+                    IdentifiantSIE TEXT,
+                    MotDePasseSIE TEXT,
                     FOREIGN KEY(ClientId) REFERENCES Client(Id)
                 );";
 
@@ -65,6 +66,21 @@ namespace ClientManagementApp
             {
                 command.ExecuteNonQuery();
             }
+
+            // Migration pour les bases existantes : ajout des colonnes SIE
+            try
+            {
+                using (var cmd = new SQLiteCommand("ALTER TABLE Entreprise ADD COLUMN IdentifiantSIE TEXT", connection))
+                    cmd.ExecuteNonQuery();
+            }
+            catch (SQLiteException) { }
+
+            try
+            {
+                using (var cmd = new SQLiteCommand("ALTER TABLE Entreprise ADD COLUMN MotDePasseSIE TEXT", connection))
+                    cmd.ExecuteNonQuery();
+            }
+            catch (SQLiteException) { }
         }
 
         #region Client
@@ -167,14 +183,17 @@ namespace ClientManagementApp
         }
 
         public int AddEntreprise(string nomEntreprise, string codeAPEandNAF, string numeroSIRE,
-            string dateDeCreation, string numeroSIE, string numeroTel,
-            string identifiantUrssaf, string motDePasseUrssaf, int clientId)
+            string dateDeCreation, string numeroTel,
+            string identifiantUrssaf, string motDePasseUrssaf,
+            string identifiantSIE, string motDePasseSIE, int clientId)
         {
             string query = @"INSERT INTO Entreprise
                 (NomEntreprise, CodeAPEandNAF, NumeroSIRE, DateDeCreation,
-                 NumeroSIE, NumeroTel, IdentifiantUrssaf, MotDePasseUrssaf, ClientId)
+                 NumeroTel, IdentifiantUrssaf, MotDePasseUrssaf,
+                 IdentifiantSIE, MotDePasseSIE, ClientId)
                 VALUES (@NomEntreprise, @CodeAPEandNAF, @NumeroSIRE, @DateDeCreation,
-                        @NumeroSIE, @NumeroTel, @IdentifiantUrssaf, @MotDePasseUrssaf, @ClientId)";
+                        @NumeroTel, @IdentifiantUrssaf, @MotDePasseUrssaf,
+                        @IdentifiantSIE, @MotDePasseSIE, @ClientId)";
 
             using (var command = new SQLiteCommand(query, connection))
             {
@@ -182,10 +201,11 @@ namespace ClientManagementApp
                 command.Parameters.AddWithValue("@CodeAPEandNAF", codeAPEandNAF);
                 command.Parameters.AddWithValue("@NumeroSIRE", numeroSIRE);
                 command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);
-                command.Parameters.AddWithValue("@NumeroSIE", numeroSIE);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
                 command.Parameters.AddWithValue("@IdentifiantUrssaf", identifiantUrssaf);
                 command.Parameters.AddWithValue("@MotDePasseUrssaf", motDePasseUrssaf);
+                command.Parameters.AddWithValue("@IdentifiantSIE", identifiantSIE);
+                command.Parameters.AddWithValue("@MotDePasseSIE", motDePasseSIE);
                 command.Parameters.AddWithValue("@ClientId", clientId);
                 command.ExecuteNonQuery();
             }
@@ -194,14 +214,16 @@ namespace ClientManagementApp
         }
 
         public void UpdateEntreprise(int id, string nomEntreprise, string codeAPEandNAF, string numeroSIRE,
-            string dateDeCreation, string numeroSIE, string numeroTel,
-            string identifiantUrssaf, string motDePasseUrssaf, int clientId)
+            string dateDeCreation, string numeroTel,
+            string identifiantUrssaf, string motDePasseUrssaf,
+            string identifiantSIE, string motDePasseSIE, int clientId)
         {
             string query = @"UPDATE Entreprise SET
                 NomEntreprise = @NomEntreprise, CodeAPEandNAF = @CodeAPEandNAF,
                 NumeroSIRE = @NumeroSIRE, DateDeCreation = @DateDeCreation,
-                NumeroSIE = @NumeroSIE, NumeroTel = @NumeroTel,
+                NumeroTel = @NumeroTel,
                 IdentifiantUrssaf = @IdentifiantUrssaf, MotDePasseUrssaf = @MotDePasseUrssaf,
+                IdentifiantSIE = @IdentifiantSIE, MotDePasseSIE = @MotDePasseSIE,
                 ClientId = @ClientId
                 WHERE Id = @Id";
 
@@ -212,10 +234,11 @@ namespace ClientManagementApp
                 command.Parameters.AddWithValue("@CodeAPEandNAF", codeAPEandNAF);
                 command.Parameters.AddWithValue("@NumeroSIRE", numeroSIRE);
                 command.Parameters.AddWithValue("@DateDeCreation", dateDeCreation);
-                command.Parameters.AddWithValue("@NumeroSIE", numeroSIE);
                 command.Parameters.AddWithValue("@NumeroTel", numeroTel);
                 command.Parameters.AddWithValue("@IdentifiantUrssaf", identifiantUrssaf);
                 command.Parameters.AddWithValue("@MotDePasseUrssaf", motDePasseUrssaf);
+                command.Parameters.AddWithValue("@IdentifiantSIE", identifiantSIE);
+                command.Parameters.AddWithValue("@MotDePasseSIE", motDePasseSIE);
                 command.Parameters.AddWithValue("@ClientId", clientId);
                 command.ExecuteNonQuery();
             }

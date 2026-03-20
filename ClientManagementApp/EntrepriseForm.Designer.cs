@@ -31,12 +31,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonCopySiret = new System.Windows.Forms.Button();
             this.buttonCopyTelephone = new System.Windows.Forms.Button();
-            this.buttonCopySIE = new System.Windows.Forms.Button();
             this.comboBoxAdresseMail = new System.Windows.Forms.ComboBox();
             this.labelEmail = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxNumeroSIE = new System.Windows.Forms.TextBox();
             this.textBoxNumeroTel = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxClients = new System.Windows.Forms.ComboBox();
@@ -77,12 +74,9 @@
             // 
             this.groupBox1.Controls.Add(this.buttonCopySiret);
             this.groupBox1.Controls.Add(this.buttonCopyTelephone);
-            this.groupBox1.Controls.Add(this.buttonCopySIE);
             this.groupBox1.Controls.Add(this.comboBoxAdresseMail);
             this.groupBox1.Controls.Add(this.labelEmail);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBoxNumeroSIE);
             this.groupBox1.Controls.Add(this.textBoxNumeroTel);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBoxClients);
@@ -123,17 +117,7 @@
             this.buttonCopyTelephone.TabIndex = 27;
             this.buttonCopyTelephone.UseVisualStyleBackColor = true;
             this.buttonCopyTelephone.Click += new System.EventHandler(this.buttonCopyTelephone_Click);
-            // 
-            // buttonCopySIE
-            // 
-            this.buttonCopySIE.Location = new System.Drawing.Point(427, 369);
-            this.buttonCopySIE.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonCopySIE.Name = "buttonCopySIE";
-            this.buttonCopySIE.Size = new System.Drawing.Size(39, 36);
-            this.buttonCopySIE.TabIndex = 26;
-            this.buttonCopySIE.UseVisualStyleBackColor = true;
-            this.buttonCopySIE.Click += new System.EventHandler(this.buttonCopySIE_Click);
-            // 
+            //
             // comboBoxAdresseMail
             // 
             this.comboBoxAdresseMail.FormattingEnabled = true;
@@ -162,25 +146,7 @@
             this.label4.Size = new System.Drawing.Size(143, 16);
             this.label4.TabIndex = 21;
             this.label4.Text = "Numéro de Téléphone";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(-4, 380);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 16);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Numéro SIE";
-            // 
-            // textBoxNumeroSIE
-            // 
-            this.textBoxNumeroSIE.Location = new System.Drawing.Point(159, 372);
-            this.textBoxNumeroSIE.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxNumeroSIE.Name = "textBoxNumeroSIE";
-            this.textBoxNumeroSIE.Size = new System.Drawing.Size(243, 22);
-            this.textBoxNumeroSIE.TabIndex = 18;
-            // 
+            //
             // textBoxNumeroTel
             // 
             this.textBoxNumeroTel.Location = new System.Drawing.Point(159, 420);
@@ -443,6 +409,7 @@
             this.btnCopyMdpSIE.TabIndex = 5;
             this.btnCopyMdpSIE.Text = "Copier";
             this.btnCopyMdpSIE.UseVisualStyleBackColor = true;
+            this.btnCopyMdpSIE.Click += new System.EventHandler(this.btnCopyMdpSIE_Click);
             // 
             // btnCopySIEId
             // 
@@ -452,6 +419,7 @@
             this.btnCopySIEId.TabIndex = 4;
             this.btnCopySIEId.Text = "Copier";
             this.btnCopySIEId.UseVisualStyleBackColor = true;
+            this.btnCopySIEId.Click += new System.EventHandler(this.btnCopySIEId_Click);
             // 
             // txtBoxMdpCIE
             // 
@@ -534,15 +502,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxClients;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxNumeroSIE;
         private System.Windows.Forms.TextBox textBoxNumeroTel;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.ComboBox comboBoxAdresseMail;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabelUrssaf;
         private System.Windows.Forms.LinkLabel linkLabelUrssafME;
-        private System.Windows.Forms.Button buttonCopySIE;
         private System.Windows.Forms.Button buttonCopyTelephone;
         private System.Windows.Forms.Button buttonCopySiret;
         private System.Windows.Forms.Button buttonCopyMdpUrssaf;

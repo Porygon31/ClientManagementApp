@@ -8,9 +8,10 @@ namespace ClientManagementApp
         public string CodeAPEandNAF { get; set; }
         public string NumeroSIRE { get; set; }
         public string DateDeCreation { get; set; }
-        public string NumeroSIE { get; set; }
         public string NumeroTel { get; set; }
         public string IdentifiantUrssaf { get; set; }
         public string MotDePasseUrssaf { get; set; }
+        public string IdentifiantSIE { get; set; }
+        public string MotDePasseSIE { get; set; }
     }
 }

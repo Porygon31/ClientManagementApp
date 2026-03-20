@@ -25,15 +25,14 @@ namespace ClientManagementApp
 
             linkLabelUrssaf.Links.Add(0, linkLabelUrssaf.Text.Length, Constantes.UrlUrssaf);
             linkLabelUrssaf.LinkClicked += OuvrirLien;
+
+            linkLblSIE.Links.Add(0, linkLblSIE.Text.Length, Constantes.UrlSIE);
         }
 
         private void EntrepriseForm_Load(object sender, EventArgs e)
         {
             Image iconBig = Properties.Resources.copy_icon_png;
             Image iconCopy = RedimensionnerImage(iconBig, 29, 29);
-
-            buttonCopySIE.Image = iconCopy;
-            buttonCopySIE.ImageAlign = ContentAlignment.MiddleCenter;
 
             buttonCopySiret.Image = iconCopy;
             buttonCopySiret.ImageAlign = ContentAlignment.MiddleCenter;
@@ -96,10 +95,16 @@ namespace ClientManagementApp
             set { textBoxMotDePasseUrssaf.Text = value; }
         }
 
-        public string NumeroSIE
+        public string IdentifiantSIE
         {
-            get { return textBoxNumeroSIE.Text; }
-            set { textBoxNumeroSIE.Text = value; }
+            get { return txtBoxIdCIE.Text; }
+            set { txtBoxIdCIE.Text = value; }
+        }
+
+        public string MotDePasseSIE
+        {
+            get { return txtBoxMdpCIE.Text; }
+            set { txtBoxMdpCIE.Text = value; }
         }
 
         public string NumeroTel
@@ -120,7 +125,7 @@ namespace ClientManagementApp
         {
             if (string.IsNullOrEmpty(EntrepriseNom) || string.IsNullOrEmpty(EntrepriseCodeAPEandNAF) ||
                 string.IsNullOrEmpty(EntrepriseAdresseMail) || string.IsNullOrEmpty(EntrepriseNumeroSIRE) ||
-                comboBoxClients.SelectedIndex == -1 || string.IsNullOrEmpty(NumeroSIE) ||
+                comboBoxClients.SelectedIndex == -1 ||
                 string.IsNullOrEmpty(NumeroTel) || string.IsNullOrEmpty(IdentifiantUrssaf) ||
                 string.IsNullOrEmpty(MotDePasseUrssaf))
             {
@@ -151,9 +156,14 @@ namespace ClientManagementApp
             }
         }
 
-        private void buttonCopySIE_Click(object sender, EventArgs e)
+        private void btnCopySIEId_Click(object sender, EventArgs e)
         {
-            CopierDansPressePapier(NumeroSIE, "numéro SIE");
+            CopierDansPressePapier(IdentifiantSIE, "identifiant SIE");
+        }
+
+        private void btnCopyMdpSIE_Click(object sender, EventArgs e)
+        {
+            CopierDansPressePapier(MotDePasseSIE, "mot de passe SIE");
         }
 
         private void buttonCopyTelephone_Click(object sender, EventArgs e)
@@ -208,7 +218,7 @@ namespace ClientManagementApp
 
         private void linkLblSIE_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // Handler requis par le Designer - pas d'action
+            OuvrirLien(sender, e);
         }
     }
 }

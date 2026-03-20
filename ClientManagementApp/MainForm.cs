@@ -181,8 +181,9 @@ namespace ClientManagementApp
                     dbHelper.AddEntreprise(
                         entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPEandNAF,
                         entrepriseForm.EntrepriseNumeroSIRE, entrepriseForm.EntrepriseDateDeCreation,
-                        entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel,
+                        entrepriseForm.NumeroTel,
                         entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf,
+                        entrepriseForm.IdentifiantSIE, entrepriseForm.MotDePasseSIE,
                         entrepriseForm.ClientId);
                     LoadEntreprises();
                 }
@@ -210,8 +211,9 @@ namespace ClientManagementApp
             entrepriseForm.EntrepriseCodeAPEandNAF = selectedRow.Cells["CodeAPEandNAF"].Value.ToString();
             entrepriseForm.EntrepriseNumeroSIRE = selectedRow.Cells["NumeroSIRE"].Value.ToString();
             entrepriseForm.EntrepriseDateDeCreation = selectedRow.Cells["DateDeCreation"].Value.ToString();
-            entrepriseForm.NumeroSIE = selectedRow.Cells["NumeroSIE"].Value.ToString();
             entrepriseForm.NumeroTel = selectedRow.Cells["NumeroTel"].Value.ToString();
+            entrepriseForm.IdentifiantSIE = selectedRow.Cells["IdentifiantSIE"].Value?.ToString() ?? "";
+            entrepriseForm.MotDePasseSIE = selectedRow.Cells["MotDePasseSIE"].Value?.ToString() ?? "";
             entrepriseForm.IdentifiantUrssaf = selectedRow.Cells["IdentifiantUrssaf"].Value.ToString();
             entrepriseForm.MotDePasseUrssaf = selectedRow.Cells["MotDePasseUrssaf"].Value.ToString();
             entrepriseForm.ClientId = Convert.ToInt32(selectedRow.Cells["ClientId"].Value);
@@ -223,8 +225,9 @@ namespace ClientManagementApp
                     dbHelper.UpdateEntreprise(entrepriseId,
                         entrepriseForm.EntrepriseNom, entrepriseForm.EntrepriseCodeAPEandNAF,
                         entrepriseForm.EntrepriseNumeroSIRE, entrepriseForm.EntrepriseDateDeCreation,
-                        entrepriseForm.NumeroSIE, entrepriseForm.NumeroTel,
+                        entrepriseForm.NumeroTel,
                         entrepriseForm.IdentifiantUrssaf, entrepriseForm.MotDePasseUrssaf,
+                        entrepriseForm.IdentifiantSIE, entrepriseForm.MotDePasseSIE,
                         entrepriseForm.ClientId);
                     LoadEntreprises();
                 }
